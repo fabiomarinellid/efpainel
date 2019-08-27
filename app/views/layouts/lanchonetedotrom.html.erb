@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lanchonete do Trom</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/1564155194400-128x129.png" type="image/x-icon">
+    <meta name="description" content="O melhor lanche de Barra Bonita">
+
+    <!-- Meta tags do Face -->
+    <meta property="og:url" content="https://lanchonetedotrom.efdigital.top/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lanchonete do Trom" />
+    <meta property="og:description" content="O melhor lanche de Barra Bonita" />
+    <meta property="og:image" content="capa.jpg" />
+    
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'lanchonetedotrom/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <%= yield %>
+    <%= javascript_include_tag 'lanchonetedotrom/application' %>
+  </body>
+</html>

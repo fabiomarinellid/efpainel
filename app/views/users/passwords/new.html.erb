@@ -1,0 +1,40 @@
+<div class="login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>EF Admin</h1>
+                  </div>
+                  <p>Esqueceu a senha?</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, html: {class: "form-validate mb-4"}) do |f| %>
+                	<%= render "devise/shared/error_messages", resource: resource %>
+                    <div class="form-group">              
+                     <%= f.email_field :email, autofocus: true, autocomplete: "email", autofocus: "true", class: "input-material", required: "required" %>
+                     <%= f.label :email, class: "label-material" %>
+                    </div>
+                   
+                  <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+
+                 <% end %>
+                 <%= render "users/shared/links" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyrights text-center">
+        <p>EF Admin by <a href="#" class="external">EF Digital</a></p>
+      </div>
+    </div>

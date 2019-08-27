@@ -1,0 +1,2 @@
+module Lanchonetedotrom::HomeHelper
+end
