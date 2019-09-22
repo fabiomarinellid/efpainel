@@ -26,7 +26,7 @@ puts "Sites cadastrados com sucesso!"
 
 puts "Cadastrando os TITULOS..."
 
-Title.create( title: 'LANCHONETE DO TROM', subtitle: '', text: 'Não deixe de conhecer nossos deliciosos lanches Sempre agradando o seu paladar Aceitamos cartões e entregamos até você', bestsellername: 'Novidades', site: Site.last )
+Title.create( title: 'LANCHONETE DO TROM', subtitle: 'O melhor lanche de Barra Bonita', text: 'Não deixe de conhecer nossos deliciosos lanches Sempre agradando o seu paladar Aceitamos cartões e entregamos até você', bestsellername: 'Novidades', principalbuttondescription: 'Peça agora mesmo', site: Site.last )
 
 
 puts "TITULOS cadastrados com sucesso!"

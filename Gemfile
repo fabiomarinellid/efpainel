@@ -32,9 +32,10 @@ gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'devise-i18n'
 gem 'devise'
 gem 'rails-assets-bootstrap'
+gem 'carrierwave', '~> 2.0'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+ gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

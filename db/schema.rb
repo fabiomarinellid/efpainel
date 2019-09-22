@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_145641) do
+ActiveRecord::Schema.define(version: 2019_09_01_172406) do
+
+  create_table "abouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "description"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_abouts_on_site_id"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "description"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_categories_on_site_id"
+  end
 
   create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -28,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_145641) do
     t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "principalbuttondescription"
+    t.string "photologo"
     t.index ["site_id"], name: "index_titles_on_site_id"
   end
 
@@ -48,5 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_145641) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "abouts", "sites"
+  add_foreign_key "categories", "sites"
   add_foreign_key "titles", "sites"
 end

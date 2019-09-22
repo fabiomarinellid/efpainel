@@ -7,20 +7,28 @@
 	<div class="block">
 	  <div class="block-body">
 	    <%= form_for([:backoffice, :config, @titulo]) do |t| %>
+	    <div class="form-group">
+            <%= t.label "Logo do site", class: "form-control-label" %>
+            <%= t.file_field :photologo, class:"form-control" %>
+	      </div>
 	      <div class="form-group">
-            <%= t.label :title, class: "form-control-label" %>
+            <%= t.label "Nome do site", class: "form-control-label" %>
             <%= t.text_field :title, class:"form-control" %>
 	      </div>
 	      <div class="form-group">
-	        <%= t.label :subtitle, class: "form-control-label" %>
+            <%= t.label "Descrição do botão do whatsapp", class: "form-control-label" %>
+            <%= t.text_field :principalbuttondescription, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+	        <%= t.label "Titulo Principal", class: "form-control-label" %>
             <%= t.text_field :subtitle, class:"form-control" %>
 	      </div>
 	      <div class="form-group">       
-	        <%= t.label :bestsellername, class: "form-control-label" %>
+	        <%= t.label "Descrição para Favoritos", class: "form-control-label" %>
             <%= t.text_field :bestsellername, class:"form-control" %>
 	      </div>
 	      <div class="form-group">
-	        <%= t.label :text, class: "form-control-label" %>
+	        <%= t.label "Texto Principal", class: "form-control-label" %>
             <%= t.text_area :text, class:"form-control" %>
 	      </div>
 	      <div class="form-group">       

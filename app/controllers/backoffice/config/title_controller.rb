@@ -1,7 +1,5 @@
 class Backoffice::Config::TitleController < ApplicationController
 
-   
-
    layout "backoffice"
 
    before_action :authenticate_user!
@@ -22,7 +20,7 @@ class Backoffice::Config::TitleController < ApplicationController
   def update
   	set_title
     if @titulo.update(params_title)
-      redirect_to backoffice_config_title_path 
+      redirect_to backoffice_config_title_index_path 
     else
       render :edit
     end
@@ -35,7 +33,7 @@ class Backoffice::Config::TitleController < ApplicationController
     end
 
     def params_title
-        params.require(:title).permit(:title, :subtitle, :text, :bestsellername, :site_id)
+        params.require(:title).permit(:title, :subtitle, :text, :bestsellername, :site_id, :principalbuttondescription, :photologo)
     end
 
 end

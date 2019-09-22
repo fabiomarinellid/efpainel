@@ -4,6 +4,6 @@ class Lanchonetedotrom::HomeController < ApplicationController
   
   
   def index
-  	@titulos = Title.all.where(site: 2)
+  	@titulos = Title.all
   end
 end

@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <h2 class="h5 no-margin-bottom">Titulos dos Sites</h2>
   </div>
-</div><div class="container-fluid">
+</div>
+<div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <div class="block margin-bottom-sm">
@@ -11,10 +12,13 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Titulo</th>
-                  <th>Subtitulo</th>
-                  <th>Texto</th>
-                  <th>Favoritos</th>
+                  <th>Nome do site</th>
+                  <th>Descrição do botão do whastapp</th>
+                  <th>Titulo Principal</th>
+                  <th>Texto Principal</th>
+                  <th>Descrição para Favoritos</th>
+                  <th>Site</th>
+                  <th>Logo do site</th>
                   <th style="text-align: center;">Ações</th>
                 </tr>
               </thead>
@@ -23,9 +27,12 @@
 	                <tr>
 	                  <th scope="row"><%= titulo.id %></th>
 	                  <td><%= titulo.title %></td>
+                    <td><%= titulo.principalbuttondescription %></td>
 	                  <td><%= titulo.subtitle %></td>
 	                  <td><%= titulo.text %></td>
 	                  <td><%= titulo.bestsellername %></td>
+                    <td><%= titulo.site.name %></td>
+                    <td><img src="<%= titulo.photologo %>" style="height: 3.8rem;" /></td>
 	                  <td style="width: 130px; text-align: center;">
 	                  	<%= link_to edit_backoffice_config_title_path(titulo), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>
