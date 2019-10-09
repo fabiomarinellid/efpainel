@@ -13,6 +13,7 @@
 
     <%= stylesheet_link_tag 'backoffice/application', media: 'all', 'data-turbolinks-track': 'reload'  %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -76,17 +77,17 @@
         <ul class="list-unstyled">
           <li class="<%= controller.controller_name == "dashboard" ? 'active' : '' %>">
            <%= link_to backoffice_dashboard_index_path do %>
-            <i class="icon-home"></i>Dashboard
+            <i class="fas fa-chart-line"></i>Dashboard
            <% end %>
           </li>
           <li class="<%= controller.controller_name == "site" ? 'active' : '' %>">
             <%= link_to backoffice_config_site_index_path do %> 
-             <i class="icon-settings"></i>Sites
+             <i class="icon-website"></i>Sites
             <% end %>
           </li>
           <li class="<%= controller.controller_name == "user" ? 'active' : '' %>">
              <%= link_to backoffice_config_user_index_path do %> 
-             <i class="icon-settings"></i>Admins
+             <i class="icon-user-1"></i>Admins
             <% end %>
           </li>
         </ul>
@@ -94,56 +95,54 @@
         <ul class="list-unstyled">
         
         <li>
-          <a href="#config" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Config</a>
+          <a href="#config" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-info"></i>Info</a>
             <ul id="config" class="collapse list-unstyled ">
               <li class="<%= controller.controller_name == "title" ? 'active' : '' %>">
                 <%= link_to backoffice_config_title_index_path do %> 
-                 <i class="icon-settings"></i>Titulos
+                 <i class="fas fa-heading"></i>Titulos
                 <% end %>
               </li>
               <li class="<%= controller.controller_name == "about" ? 'active' : '' %>">
                  <%= link_to backoffice_config_about_index_path do %> 
-                 <i class="icon-settings"></i>Sobre
+                 <i class="fas fa-address-card"></i>Sobre
                 <% end %>
               </li>
             </ul>
         </li>
         <li>
-          <a href="#product" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Produto</a>
+          <a href="#product" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-list"></i>Cardapio</a>
             <ul id="product" class="collapse list-unstyled ">
                <li class="<%= controller.controller_name == "category" ? 'active' : '' %>">
                  <%= link_to backoffice_product_category_index_path do %> 
-                 <i class="icon-settings"></i>Categoria
+                 <i class="icon-list"></i>Categoria
                 <% end %>
               </li>
                <li>
-                 <a href="#"><i class="icon-home"></i>Rótulos</a>
+                 <a href="#"><i class="fas fa-tags"></i>Rótulos</a>
                </li>
                <li>
-                 <a href="#"><i class="icon-home"></i>Produtos</a>
+                 <a href="#"><i class="fas fa-hamburger"></i>Produtos</a>
                </li>
             </ul>
         </li>
         <li>
-          <a href="#contact" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Contato</a>
+          <a href="#contact" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-address-book"></i>Contatos</a>
             <ul id="contact" class="collapse list-unstyled ">
-               <li>
-                 <a href="#"><i class="icon-home"></i>Tipos de Contato</a>
+                <li>
+                 <a href="#"><i class="fas fa-mobile-alt"></i>Telefones</a>
                </li>
                 <li>
-                 <a href="#"><i class="icon-home"></i>Contatos</a>
-               </li>
-                <li>
-                 <a href="#"><i class="icon-home"></i>Endereço</a>
+                 <a href="#"><i class="fas fa-map-marked"></i>Endereço</a>
                </li>
             </ul>
         </li>
       </ul>
         <span class="heading">Links</span>
         <ul class="list-unstyled">
-           <li>
-            <a href="#"><i class="icon-home"></i>Link do site</a>
-           </li>
+          <li class="<%= controller.controller_name == "category" ? 'active' : '' %>">
+             <%= link_to lanchonetedotrom_home_index_path do %> 
+             <i class="fas fa-link"></i>Link do site
+            <% end %>
         </ul>
       </nav>
     <!-- Sidebar Navigation end-->
