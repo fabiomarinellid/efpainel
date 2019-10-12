@@ -117,32 +117,41 @@
                  <i class="icon-list"></i>Categoria
                 <% end %>
               </li>
-               <li>
-                 <a href="#"><i class="fas fa-tags"></i>Rótulos</a>
-               </li>
-               <li>
-                 <a href="#"><i class="fas fa-hamburger"></i>Produtos</a>
-               </li>
+              <li class="<%= controller.controller_name == "label" ? 'active' : '' %>">
+                 <%= link_to backoffice_product_label_index_path do %> 
+                 <i class="fas fa-tags"></i>Rótulos
+                <% end %>
+              </li>
+              <li class="<%= controller.controller_name == "product" ? 'active' : '' %>">
+                 <%= link_to backoffice_product_product_index_path do %> 
+                 <i class="fas fa-hamburger"></i>Produtos
+                <% end %>
+              </li>
             </ul>
         </li>
         <li>
           <a href="#contact" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-address-book"></i>Contatos</a>
             <ul id="contact" class="collapse list-unstyled ">
-                <li>
-                 <a href="#"><i class="fas fa-mobile-alt"></i>Telefones</a>
-               </li>
-                <li>
-                 <a href="#"><i class="fas fa-map-marked"></i>Endereço</a>
-               </li>
+                <li class="<%= controller.controller_name == "phone" ? 'active' : '' %>">
+                 <%= link_to backoffice_contact_phone_index_path do %> 
+                 <i class="fas fa-mobile-alt"></i>Telefones
+                <% end %>
+              </li>
+              <li class="<%= controller.controller_name == "address" ? 'active' : '' %>">
+                 <%= link_to backoffice_contact_address_index_path do %> 
+                 <i class="fas fa-map-marked"></i>Endereços
+                <% end %>
+              </li>
             </ul>
         </li>
       </ul>
         <span class="heading">Links</span>
         <ul class="list-unstyled">
-          <li class="<%= controller.controller_name == "category" ? 'active' : '' %>">
+          <li>
              <%= link_to lanchonetedotrom_home_index_path do %> 
              <i class="fas fa-link"></i>Link do site
             <% end %>
+          </li>
         </ul>
       </nav>
     <!-- Sidebar Navigation end-->

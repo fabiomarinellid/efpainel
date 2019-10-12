@@ -1,6 +1,30 @@
 Rails.application.routes.draw do
   
   namespace :backoffice do
+    namespace :product do
+      get 'product/index'
+      get 'product/edit'
+    end
+  end
+  namespace :backoffice do
+    namespace :product do
+      get 'label/index'
+      get 'label/edit'
+    end
+  end
+  namespace :backoffice do
+    namespace :contact do
+      get 'phone/index'
+      get 'phone/edit'
+    end
+  end
+  namespace :backoffice do
+    namespace :contact do
+      get 'address/index'
+      get 'address/edit'
+    end
+  end
+  namespace :backoffice do
     namespace :config do
       get 'user/index'
       get 'user/edit'

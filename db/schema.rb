@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_172406) do
+ActiveRecord::Schema.define(version: 2019_10_12_210724) do
 
   create_table "abouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "description"
@@ -20,12 +20,59 @@ ActiveRecord::Schema.define(version: 2019_09_01_172406) do
     t.index ["site_id"], name: "index_abouts_on_site_id"
   end
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "street"
+    t.string "number"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_addresses_on_site_id"
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "description"
     t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["site_id"], name: "index_categories_on_site_id"
+  end
+
+  create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_labels_on_site_id"
+  end
+
+  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_phones_on_site_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "status"
+    t.integer "bestseller"
+    t.bigint "category_id"
+    t.bigint "label_id"
+    t.string "photo"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["label_id"], name: "index_products_on_label_id"
+    t.index ["site_id"], name: "index_products_on_site_id"
   end
 
   create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,6 +114,12 @@ ActiveRecord::Schema.define(version: 2019_09_01_172406) do
   end
 
   add_foreign_key "abouts", "sites"
+  add_foreign_key "addresses", "sites"
   add_foreign_key "categories", "sites"
+  add_foreign_key "labels", "sites"
+  add_foreign_key "phones", "sites"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "labels"
+  add_foreign_key "products", "sites"
   add_foreign_key "titles", "sites"
 end

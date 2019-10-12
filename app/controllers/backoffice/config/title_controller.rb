@@ -11,12 +11,20 @@ class Backoffice::Config::TitleController < ApplicationController
     @titulo = Title.new
   end
 
+   def create
+    @titulo = User.new(params_title)
+    if @titulo.save
+      redirect_to backoffice_config_title_index_path
+    else
+      render :new
+    end
+  end
+
   def edit
   	 set_title
   end
 
   
-
   def update
   	set_title
     if @titulo.update(params_title)

@@ -1,0 +1,40 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Cadastrar Titulos do site</h2>
+  </div>
+</div>
+<div class="col-lg-12">
+	<div class="block">
+	  <div class="block-body">
+	    <%= form_for([:backoffice, :config, @titulo]) do |t| %>
+	    <div class="form-group">
+            <%= t.label "Logo do site", class: "form-control-label" %>
+            <%= t.file_field :photologo, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+            <%= t.label "Nome do site", class: "form-control-label" %>
+            <%= t.text_field :title, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+            <%= t.label "Descrição do botão do whatsapp", class: "form-control-label" %>
+            <%= t.text_field :principalbuttondescription, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+	        <%= t.label "Titulo Principal", class: "form-control-label" %>
+            <%= t.text_field :subtitle, class:"form-control" %>
+	      </div>
+	      <div class="form-group">       
+	        <%= t.label "Descrição para Favoritos", class: "form-control-label" %>
+            <%= t.text_field :bestsellername, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+	        <%= t.label "Texto Principal", class: "form-control-label" %>
+            <%= t.text_area :text, class:"form-control" %>
+	      </div>
+	      <div class="form-group">       
+	        <%= t.submit "Salvar", class: "btn btn-primary" %>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+</div>
