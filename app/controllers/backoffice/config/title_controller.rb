@@ -1,4 +1,5 @@
 class Backoffice::Config::TitleController < ApplicationController
+   before_action :set_title, only: [:edit, :update]
 
    layout "backoffice"
 
@@ -7,7 +8,7 @@ class Backoffice::Config::TitleController < ApplicationController
   	@titulos = Title.all
   end
 
-   def new
+  def new
     @titulo = Title.new
   end
 

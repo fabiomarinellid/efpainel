@@ -2,43 +2,50 @@ Rails.application.routes.draw do
   
   namespace :backoffice do
     namespace :product do
-      get 'product/index'
-      get 'product/edit'
+      resources :item, except: [:show]
+      match 'item/:id' => 'item#destroy', via: [:get]
     end
   end
   namespace :backoffice do
     namespace :product do
-      get 'label/index'
-      get 'label/edit'
-    end
-  end
-  namespace :backoffice do
-    namespace :contact do
-      get 'phone/index'
-      get 'phone/edit'
-    end
-  end
-  namespace :backoffice do
-    namespace :contact do
-      get 'address/index'
-      get 'address/edit'
-    end
-  end
-  namespace :backoffice do
-    namespace :config do
-      get 'user/index'
-      get 'user/edit'
-      get 'user/new'
+      resources :product, except: [:show]
+      match 'product/:id' => 'product#destroy', via: [:get]
     end
   end
   namespace :backoffice do
     namespace :product do
-      get 'category/index'
+      resources :label, except: [:show]
+      match 'label/:id' => 'label#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :contact do
+      resources :phone, except: [:show]
+      match 'phone/:id' => 'phone#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :contact do
+      resources :address, except: [:show]
+      match 'address/:id' => 'address#destroy', via: [:get]
     end
   end
   namespace :backoffice do
     namespace :config do
-      get 'about/index'
+      resources :user, except: [:show]
+      match 'user/:id' => 'user#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :product do
+      resources :category, except: [:show]
+      match 'category/:id' => 'category#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :config do
+      resources :about, except: [:show]
+      match 'about/:id' => 'about#destroy', via: [:get]
     end
   end
   namespace :backoffice do

@@ -1,2 +1,59 @@
-<h1>Backoffice::Product::Product#index</h1>
-<p>Find me in app/views/backoffice/product/product/index.html.erb</p>
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Cadastro dos produtos</h2>
+    <h3><%= notice %></h3>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block margin-bottom-sm">
+          <div class="table-responsive"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Ativo</th>
+                  <th>Destacar</th>
+                  <th>Categoria</th>
+                  <th>Rótulo</th>
+                  <th>Site</th>
+                  <th style="text-align: center;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% @produtos.each do |produto| %>
+	                <tr>
+	                  <th scope="row"><%= produto.id %></th>
+	                  <td><%= produto.name %></td>
+	                  <td><%= produto.description %></td>
+	                  <td><%= produto.active%></td>
+	                  <td><%= produto.bestseller%></td>
+	                  <td><%= produto.category_id %></td>
+	                  <td><%= produto.label_id %></td>
+	                  <td><%= produto.site_id %></td>
+	                  <td style="width: 130px; text-align: center;">
+	                  	<%= link_to edit_backoffice_product_product_path(produto), class: "btn btn-primary" do %>
+	                        <i class="icon-new-file"></i>
+	                    <% end %>
+	                    <%= link_to backoffice_product_product_path(produto), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{produto.name}</b>?"} do %>
+	                    	<i class="icon-close"></i>
+	                        <% end %>
+	                  </td>
+	                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      	<div style="width: 130px; text-align: center;">
+      	 <%= link_to new_backoffice_product_product_path, class: "btn btn-primary" do %>
+            <i class="fa fa-plus"></i>
+         <% end %>
+        </div>
+      </div>
+    </div>

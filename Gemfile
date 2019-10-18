@@ -33,6 +33,11 @@ gem 'devise-i18n'
 gem 'devise'
 gem 'carrierwave', '~> 2.0'
 
+source 'https://rails-assets.org' do
+# BootboxJS
+gem 'rails-assets-bootbox'
+end
+
 # Use ActiveStorage variant
  gem 'mini_magick', '~> 4.8'
 

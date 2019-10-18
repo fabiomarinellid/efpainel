@@ -1,0 +1,58 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Novo Produto</h2>
+  </div>
+</div>
+
+<% if @produto.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+    <ul>
+        <% @produto.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+
+    </div>
+<% end %>
+
+<div class="col-lg-12">
+	<div class="block">
+	  <div class="block-body">
+	    <%= form_for @produto, url: backoffice_product_product_index_path do |t| %>
+	      <div class="form-group">
+            <%= t.label "Nome", class: "form-control-label" %>
+            <%= t.text_field :name, class:"form-control" %>
+	      </div>
+        <div class="form-group">
+            <%= t.label "Descrição", class: "form-control-label" %>
+            <%= t.text_field :description, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= t.label "Destacar", class: "form-control-label" %>
+            <%= t.text_field :bestseller, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= t.label "Ativo", class: "form-control-label" %>
+            <%= t.text_field :active, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= t.label "Rótulo", class: "form-control-label" %>
+            <%= t.text_field :label_id, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= t.label "Categoria", class: "form-control-label" %>
+            <%= t.text_field :category_id, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= t.label "Site", class: "form-control-label" %>
+            <%= t.text_field :site_id, class:"form-control" %>
+        </div>
+	      <div class="form-group">       
+	        <%= t.submit "Salvar", class: "btn btn-primary" %>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+</div>
