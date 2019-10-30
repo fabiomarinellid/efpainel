@@ -15,7 +15,7 @@ class Backoffice::Config::TitleController < ApplicationController
    def create
     @titulo = User.new(params_title)
     if @titulo.save
-      redirect_to backoffice_config_title_index_path
+      redirect_to backoffice_config_title_index_path, notice: "Titulos salvos com sucesso"
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Backoffice::Config::TitleController < ApplicationController
   def update
   	set_title
     if @titulo.update(params_title)
-      redirect_to backoffice_config_title_index_path 
+      redirect_to backoffice_config_title_index_path, notice: "Titulos alterados com sucesso"
     else
       render :edit
     end

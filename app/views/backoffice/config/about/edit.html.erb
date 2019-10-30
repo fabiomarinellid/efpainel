@@ -8,8 +8,12 @@
 	  <div class="block-body">
 	    <%= form_for([:backoffice, :config, @about]) do |t| %>
 	      <div class="form-group">
-	        <%= t.label "Digite as Informações sobre a lanchonete", class: "form-control-label" %>
-            <%= t.text_area :text, class:"form-control" %>
+	        <%= t.label "Descrição", class: "form-control-label" %>
+            <%= t.text_area :description, class:"form-control" %>
+	      </div>
+	      <div class="form-group">
+	        <%= t.label "Site", class: "form-control-label" %>
+            <%= t.text_area :site_id, class:"form-control" %>
 	      </div>
 	      <div class="form-group">       
 	        <%= t.submit "Salvar", class: "btn btn-primary" %>

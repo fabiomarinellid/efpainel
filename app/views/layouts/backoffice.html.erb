@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
 
-    <%= stylesheet_link_tag 'backoffice/application', media: 'all', 'data-turbolinks-track': 'reload'  %>
+    <%= stylesheet_link_tag 'backoffice/application', media: 'all' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
@@ -44,7 +44,9 @@
                     <i class="icon-new-file"></i><span>Perfil</span>
                 </a>
               <div aria-labelledby="languages" class="dropdown-menu">
-                <a rel="nofollow" href="#" class="dropdown-item"><span>Meu cadastro</span></a>
+                <%= link_to edit_backoffice_config_user_path(current_user.id), class: "dropdown-item" do %>
+                   <span>Meu perfil</span>
+                <% end %>
                 <a rel="nofollow" href="#" class="dropdown-item"><span>Informações do site</span>
                 </a>
               </div>
@@ -167,6 +169,6 @@
         </footer>
     </div>
    </div>
-   <%= javascript_include_tag 'backoffice/application', 'data-turbolinks-track': 'reload'  %>
+   <%= javascript_include_tag 'backoffice/application'  %>
   </body>
 </html>

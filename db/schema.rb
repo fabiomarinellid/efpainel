@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_174600) do
+ActiveRecord::Schema.define(version: 2019_10_30_011010) do
 
   create_table "abouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "description"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_174600) do
     t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["label_id"], name: "index_items_on_label_id"
     t.index ["site_id"], name: "index_items_on_site_id"
@@ -109,6 +110,8 @@ ActiveRecord::Schema.define(version: 2019_10_18_174600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "site_id"
+    t.string "name"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["site_id"], name: "index_users_on_site_id"

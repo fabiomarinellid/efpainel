@@ -16,7 +16,7 @@ class Backoffice::Config::UserController < ApplicationController
   def create
     @admin = User.new(params_admin)
     if @admin.save
-      redirect_to backoffice_config_user_path
+      redirect_to backoffice_config_user_index_path, notice: "Novo Administrador #{@admin.name} salvo com sucesso"
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Backoffice::Config::UserController < ApplicationController
 
   def update
     if @admin.update(params_admin)
-      redirect_to backoffice_config_user_path
+      redirect_to backoffice_config_user_index_path, notice: "Administrador #{@admin.name} alterado com sucesso"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Backoffice::Config::UserController < ApplicationController
     admin_email = @admin.email
 
     if @admin.destroy
-      redirect_to backoffice_config_user_path
+      redirect_to backoffice_config_user_index_path, notice: "Administrador #{admin_email} excluido com sucesso"
     else
       render :index
     end
@@ -52,6 +52,6 @@ class Backoffice::Config::UserController < ApplicationController
     end
 
     def params_admin
-        params.require(:user).permit(:email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :role, :password, :password_confirmation, :site_id)
     end
 end

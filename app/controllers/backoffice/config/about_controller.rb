@@ -21,7 +21,7 @@ class Backoffice::Config::AboutController < ApplicationController
   end
 
   def edit
-     set_title
+     set_about
   end
 
   

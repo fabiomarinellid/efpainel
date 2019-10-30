@@ -12,7 +12,9 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Nome</th>
                   <th>Email</th>
+                  <th>Perfil de acesso</th>
                   <th>Site</th>
                   <th style="text-align: center;">Ações</th>
                 </tr>
@@ -21,20 +23,18 @@
               	<% @admins.each do |admin| %>
 	                <tr>
 	                  <th scope="row"><%= admin.id %></th>
-	                  <td><%= admin.email %></td>
+	                  <td><%= admin.name %></td>
+                    <td><%= admin.email %></td>
+                    <td><%= admin.role_i18n %></td>
 	                  <td><%= admin.site_id %></td>
-	                  <td style="width: 130px; text-align: center;"> 
-	                  	<div style="float:left; margin: 1px;">
-	                  	<%= link_to "", class: "btn btn-primary" do %>
-	                        <i class="icon-new-file"></i>
-	                    <% end %>
-	                    </div>
-	                    <div style="float:left; margin: 1px;">
-	                    <%= link_to "", class: "btn btn-secondary" do %>
-	                        <i class="icon-close"></i>
-	                    <% end %>
-	                    </div>
-	                  </td>
+	                  <td style="width: 130px; text-align: center;">
+                      <%= link_to edit_backoffice_config_user_path(admin), class: "btn btn-primary" do %>
+                          <i class="icon-new-file"></i>
+                      <% end %>
+                      <%= link_to backoffice_config_user_path(admin), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{admin.name}</b>?"} do %>
+                        <i class="icon-close"></i>
+                          <% end %>
+                    </td>
 	                </tr>
                 <% end %>
               </tbody>
@@ -43,4 +43,11 @@
         </div>
       </div>
     </div>
+     <div class="row">
+        <div style="width: 130px; text-align: center;">
+         <%= link_to new_backoffice_config_user_path, class: "btn btn-primary" do %>
+            <i class="fa fa-plus"></i>
+         <% end %>
+        </div>
+      </div>
   </div>

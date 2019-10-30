@@ -5,5 +5,9 @@ class Lanchonetedotrom::HomeController < ApplicationController
   
   def index
   	@titulos = Title.all
+
+
+  	@phones = Phone.all.where(current_user.site_id)
+
   end
 end

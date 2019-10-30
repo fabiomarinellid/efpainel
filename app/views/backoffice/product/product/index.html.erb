@@ -15,6 +15,7 @@
                   <th>#</th>
                   <th>Nome</th>
                   <th>Descrição</th>
+                  <th>Preço</th>
                   <th>Ativo</th>
                   <th>Destacar</th>
                   <th>Categoria</th>
@@ -29,6 +30,7 @@
 	                  <th scope="row"><%= produto.id %></th>
 	                  <td><%= produto.name %></td>
 	                  <td><%= produto.description %></td>
+                    <td><%= humanized_money_with_symbol produto.price %></td>
 	                  <td><%= produto.active%></td>
 	                  <td><%= produto.bestseller%></td>
 	                  <td><%= produto.category_id %></td>

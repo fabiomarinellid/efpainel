@@ -1,2 +1,59 @@
-<h1>Backoffice::Contact::Address#index</h1>
-<p>Find me in app/views/backoffice/contact/address/index.html.erb</p>
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Endereços</h2>
+    <h3><%= notice %></h3>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block margin-bottom-sm">
+          <div class="table-responsive"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Rua</th>
+                  <th>Número</th>
+                  <th>Bairro</th>
+                  <th>Cidade</th>
+                  <th>Estado</th>
+                  <th>CEP</th>
+                  <th>Site</th>
+                  <th style="text-align: center;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% @addresses.each do |address| %>
+	                <tr>
+	                  <th scope="row"><%= address.id %></th>
+	                  <td><%= address.street %></td>
+	                  <td><%= address.number %></td>
+	                  <td><%= address.neighborhood %></td>
+	                  <td><%= address.city %></td>
+	                  <td><%= address.state %></td>
+	                  <td><%= address.zipcode %></td>
+                      <td><%= address.site_id %></td>
+	                  <td style="width: 130px; text-align: center;">
+	                  	<%= link_to edit_backoffice_contact_address_path(address), class: "btn btn-primary" do %>
+	                        <i class="icon-new-file"></i>
+	                    <% end %>
+	                    <%= link_to backoffice_contact_address_path(address), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{address.street}</b>?"} do %>
+	                    	<i class="icon-close"></i>
+	                        <% end %>
+	                  </td>
+	                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      	<div style="width: 130px; text-align: center;">
+      	 <%= link_to new_backoffice_contact_address_path, class: "btn btn-primary" do %>
+            <i class="fa fa-plus"></i>
+         <% end %>
+        </div>
+      </div>
+    </div>
