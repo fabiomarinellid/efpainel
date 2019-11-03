@@ -17,7 +17,7 @@
                   <th>Descrição</th>
                   <th>Preço</th>
                   <th>Ativo</th>
-                  <th>Destacar</th>
+                  <th>Destacado</th>
                   <th>Categoria</th>
                   <th>Rótulo</th>
                   <th>Site</th>
@@ -31,11 +31,11 @@
 	                  <td><%= produto.name %></td>
 	                  <td><%= produto.description %></td>
                     <td><%= humanized_money_with_symbol produto.price %></td>
-	                  <td><%= produto.active%></td>
-	                  <td><%= produto.bestseller%></td>
-	                  <td><%= produto.category_id %></td>
-	                  <td><%= produto.label_id %></td>
-	                  <td><%= produto.site_id %></td>
+	                  <td><%= produto.active_i18n%></td>
+	                  <td><%= produto.bestseller_i18n%></td>
+	                  <td><%= produto.category.description %></td>
+	                  <td><%= produto.label.name %></td>
+	                  <td><%= produto.site.name %></td>
 	                  <td style="width: 130px; text-align: center;">
 	                  	<%= link_to edit_backoffice_product_product_path(produto), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>

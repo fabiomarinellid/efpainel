@@ -23,7 +23,7 @@
 	                <tr>
 	                  <th scope="row"><%= categoria.id %></th>
 	                  <td><%= categoria.description %></td>
-                    <td><%= categoria.site_id %></td>
+                    <td><%= categoria.site.name %></td>
 	                  <td style="width: 130px; text-align: center;">
 	                  	<%= link_to edit_backoffice_product_category_path(categoria), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>

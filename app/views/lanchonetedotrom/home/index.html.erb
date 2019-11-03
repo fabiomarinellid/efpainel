@@ -13,9 +13,8 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <%= link_to "#top" do %>				          
-                      <img src="<%= titulo.photologo %>" style="height: 3.8rem;" alt="Lanchonete do Trom" />
+                      <img src="<%= titulo.photologo %>" style="height: 3.8rem;" alt="" />
 				    <% end %>
-                    
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="#top"><%= titulo.title %></a></span>
             </div>
@@ -629,20 +628,31 @@
         <div class="media-container-row content text-white">
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
-                    <a href="#top">
-                    	<%= image_tag("lanchonetedotrom/1564155194400-202x204.png", :alt => "Lanchonete do Trom") %>
-                    </a>
+                    <% @titulos.each do |titulo| %>
+                        <%= link_to "#top" do %>                          
+                          <img src="<%= titulo.photologo %>" style="height: 5.8rem;" alt="" />
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Endereço</h5>
-                <p class="mbr-text">Gagliano Ziglio, 356 <br>Jardim Santa Helena <br>Barra Bonita</p>
+                <h5 class="pb-3">Endereço</h5>
+                <% @addresses.each do |address| %>
+                  <p class="mbr-text">
+                    <%= address.street %>, <%= address.number %><br>
+                    <%= address.neighborhood %><br>
+                    <%= address.city %>, <%= address.state %><br>
+                    <%= address.zipcode %> <br>
+                  </p>
+                <% end %>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Contatos</h5>
-                <p class="mbr-text">Bruna 14 9 9686 2179<br>Trom 14 9 9777 4567<br><br></p>
+                <h5 class="pb-3">Contatos</h5>
+                <p class="mbr-text">
+                  <% @phones.each do |phone| %>
+                    <%= phone.name %> <%= phone.phone %><br>
+                  <% end %>
+                  </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">

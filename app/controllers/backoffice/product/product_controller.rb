@@ -10,9 +10,11 @@ class Backoffice::Product::ProductController < ApplicationController
 
   def new
     @produto = Item.new
+    carregaDropdowns
   end
 
   def create
+    carregaDropdowns
     @produto = Item.new(params_produto)
     if @produto.save
       redirect_to backoffice_product_product_index_path, notice: "Produto #{@produto.name} salvo com sucesso"
@@ -23,11 +25,13 @@ class Backoffice::Product::ProductController < ApplicationController
 
 
   def edit
+     carregaDropdowns
   	 set_produto
   end
 
   
   def update
+    carregaDropdowns
   	set_produto
     if @produto.update(params_produto)
       redirect_to backoffice_product_product_index_path, notice: "Produto #{@produto.id} alterado com sucesso"
@@ -48,6 +52,12 @@ class Backoffice::Product::ProductController < ApplicationController
   end
 
  private
+
+    def carregaDropdowns
+      @categories = Category.all   
+      @labels = Label.all
+      @sites = Site.all   
+    end
 
     def set_produto
       @produto = Item.find(params[:id])

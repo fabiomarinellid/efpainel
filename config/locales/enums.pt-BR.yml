@@ -3,4 +3,11 @@
     user:
       role:
         full_access: Acesso Completo
-        restricted_access: Acesso Restrito  
+        restricted_access: Acesso Restrito
+    item:
+      active:
+        enable: Sim
+        disable: Não
+      bestseller: 
+        highlight: Sim
+        not_highlight: Não  

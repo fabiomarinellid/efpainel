@@ -21,41 +21,48 @@
 	<div class="block">
 	  <div class="block-body">
 	    <%= form_for @produto, url: backoffice_product_product_index_path do |t| %>
-	      <div class="form-group">
-            <%= t.label "Nome", class: "form-control-label" %>
-            <%= t.text_field :name, class:"form-control" %>
-	      </div>
-        <div class="form-group">
-            <%= t.label "Descrição", class: "form-control-label" %>
-            <%= t.text_field :description, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Preço", class: "form-control-label" %>
-            <%= t.text_field :price, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Destacar", class: "form-control-label" %>
-            <%= t.text_field :bestseller, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Ativo", class: "form-control-label" %>
-            <%= t.text_field :active, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Rótulo", class: "form-control-label" %>
-            <%= t.text_field :label_id, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Categoria", class: "form-control-label" %>
-            <%= t.text_field :category_id, class:"form-control" %>
-        </div>
-        <div class="form-group">
-            <%= t.label "Site", class: "form-control-label" %>
-            <%= t.text_field :site_id, class:"form-control" %>
-        </div>
-	      <div class="form-group">       
-	        <%= t.submit "Salvar", class: "btn btn-primary" %>
-	      </div>
+	        <div class="form-group">
+                <%= t.label "Nome", class: "form-control-label" %>
+                <%= t.text_field :name, class:"form-control" %>
+	        </div>
+            <div class="form-group">
+                <%= t.label "Descrição", class: "form-control-label" %>
+                <%= t.text_field :description, class:"form-control" %>
+            </div>
+            <div class="form-group">
+                <%= t.label "Preço", class: "form-control-label" %>
+                <%= t.text_field :price, class:"form-control" %>
+            </div>
+            <div class="form-group">
+                <%= t.label "Categoria", class: "form-control-label" %>   
+                <%= t.collection_select( :category_id, @categories, :id, :description, 
+                {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+            </div>
+            <div class="form-group">
+                <%= t.label "Rótulo", class: "form-control-label" %>   
+                <%= t.collection_select( :label_id, @labels, :id, :name, 
+                {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+            </div>
+            <div class="form-group">
+                <%= t.label "Site", class: "form-control-label" %>   
+                <%= t.collection_select( :site_id, @sites, :id, :name, 
+                {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+            </div>
+            <div class="form-group">
+             <div class="i-checks">
+                <%= t.check_box(:bestseller, { class: "checkbox-template" }, "highlight", "not_highlight") %>
+                <%= t.label "Destacar produto no cardápio" %>
+             </div>
+            </div>
+            <div class="form-group">
+             <div class="i-checks">
+                <%= t.check_box(:active, { class: "checkbox-template" }, "disable", "enable") %>
+                <%= t.label "Não mostrar produto no cardápio" %>
+             </div>
+            </div>
+	        <div class="form-group">       
+	            <%= t.submit "Salvar", class: "btn btn-primary" %>
+	        </div>
 	    <% end %>
 	  </div>
 	</div>

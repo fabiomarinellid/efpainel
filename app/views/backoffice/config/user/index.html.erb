@@ -12,6 +12,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Foto do perfil</th>
                   <th>Nome</th>
                   <th>Email</th>
                   <th>Perfil de acesso</th>
@@ -23,10 +24,11 @@
               	<% @admins.each do |admin| %>
 	                <tr>
 	                  <th scope="row"><%= admin.id %></th>
+                    <td><img src="<%= admin.photoavatar %>" style="height: 3.8rem;" /></td>
 	                  <td><%= admin.name %></td>
                     <td><%= admin.email %></td>
                     <td><%= admin.role_i18n %></td>
-	                  <td><%= admin.site_id %></td>
+	                  <td><%= admin.site.name %></td>
 	                  <td style="width: 130px; text-align: center;">
                       <%= link_to edit_backoffice_config_user_path(admin), class: "btn btn-primary" do %>
                           <i class="icon-new-file"></i>

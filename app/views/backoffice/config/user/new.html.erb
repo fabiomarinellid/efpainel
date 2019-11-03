@@ -22,6 +22,10 @@
 	<div class="block">
 	  <div class="block-body">
 	    <%= form_for @admin, url: backoffice_config_user_index_path do |t| %>
+	        <div class="form-group">
+               <%= t.label "Foto do perfil", class: "form-control-label" %>
+               <%= t.file_field :photoavatar, class:"form-control" %>
+	        </div>
 		    <div class="form-group">
 	           <%= t.label "Nome", class: "form-control-label" %>
 	           <%= t.text_field :name, class:"form-control" %>

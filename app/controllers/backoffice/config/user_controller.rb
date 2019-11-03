@@ -52,6 +52,6 @@ class Backoffice::Config::UserController < ApplicationController
     end
 
     def params_admin
-        params.require(:user).permit(:name, :email, :role, :password, :password_confirmation, :site_id)
+        params.require(:user).permit(:photoavatar, :name, :email, :role, :password, :password_confirmation, :site_id)
     end
 end

@@ -68,11 +68,17 @@
       <nav id="sidebar">
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
-          <div class="title">
-            <h1 class="h5">Fabio Marinelli</h1>
-            <p>Administrador</p>
-          </div>
+          <% User.where(id: current_user.id).each do |admin| %>
+            <div class="avatar">
+              <%= link_to "#top" do %>                  
+                  <img src="<%= admin.photoavatar %>" alt="..." class="img-fluid rounded-circle">
+              <% end %>
+            </div>
+            <div class="title">
+              <h1 class="h5"><%= admin.name %></h1>
+              <p><%= admin.site.name %></p>
+            </div>
+          <% end %>
         </div>
         <!-- Sidebar Navidation Menus-->
         <span class="heading">Principal</span>
@@ -163,7 +169,7 @@
           <div class="footer__block block no-margin-bottom">
             <div class="container-fluid text-center">
               <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-              <p class="no-margin-bottom">2019 &copy; EF Admin</p>
+              <p class="no-margin-bottom">2019 &copy; EF Painel</p>
             </div>
           </div>
         </footer>
