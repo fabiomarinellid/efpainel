@@ -1,11 +1,14 @@
 class Backoffice::Contact::PhoneController < ApplicationController
  before_action :set_phone, only: [:edit, :update, :destroy]
+ before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
  layout "backoffice"
 
  before_action :authenticate_user!
   def index
   	@phones = Phone.all
+
+    @phones_site_logado = Phone.all.where(site_id: current_user.site_id)
   end
 
   def new
@@ -48,6 +51,10 @@ class Backoffice::Contact::PhoneController < ApplicationController
   end
 
  private
+
+    def carregaDropdowns
+      @sites = Site.all   
+    end
 
     def set_phone
       @phone = Phone.find(params[:id])

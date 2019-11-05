@@ -1,11 +1,14 @@
 class Backoffice::Contact::AddressController < ApplicationController
  before_action :set_address, only: [:edit, :update, :destroy]
+ before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
  layout "backoffice"
 
  before_action :authenticate_user!
   def index
   	@addresses = Address.all
+
+    @address_site_logado = Address.all.where(site_id: current_user.site_id)
   end
 
  def new
@@ -48,6 +51,10 @@ class Backoffice::Contact::AddressController < ApplicationController
   end
 
  private
+
+    def carregaDropdowns
+      @sites = Site.all   
+    end
 
     def set_address
       @address = Address.find(params[:id])

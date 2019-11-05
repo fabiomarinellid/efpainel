@@ -1,5 +1,6 @@
 class Backoffice::Product::ProductController < ApplicationController
   before_action :set_produto, only: [:edit, :update, :destroy]
+  before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
   layout "backoffice"
 
@@ -10,11 +11,9 @@ class Backoffice::Product::ProductController < ApplicationController
 
   def new
     @produto = Item.new
-    carregaDropdowns
   end
 
   def create
-    carregaDropdowns
     @produto = Item.new(params_produto)
     if @produto.save
       redirect_to backoffice_product_product_index_path, notice: "Produto #{@produto.name} salvo com sucesso"
@@ -25,13 +24,11 @@ class Backoffice::Product::ProductController < ApplicationController
 
 
   def edit
-     carregaDropdowns
   	 set_produto
   end
 
   
   def update
-    carregaDropdowns
   	set_produto
     if @produto.update(params_produto)
       redirect_to backoffice_product_product_index_path, notice: "Produto #{@produto.id} alterado com sucesso"

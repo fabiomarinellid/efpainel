@@ -554,26 +554,6 @@
                     </div>
                 </div>
             </div>
-            <!--Card-3-->
-            
-            <!--Card-4-->
-            
-            <!--Card-5-->
-            
-            <!--Card-6-->
-            
-            <!--Card-7-->
-            
-            <!--Card-8-->
-            
-            <!--Card-9-->
-            
-            <!--Card-10-->
-            
-            <!--Card-11-->
-            
-            <!--Card-12-->
-            
         </div>
     </div>
 </section>
@@ -655,9 +635,10 @@
                   </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    EFDigital.top</h5>
-                <p class="mbr-text">© Copyright 2019 &nbsp;Lanchonete do Trom &nbsp;All Rights Reserved</p>
+                <h5 class="pb-3">Lancho.net</h5>
+                <% @titulos.each do |titulo| %>
+                  <p class="mbr-text">© Copyright 2019 <br> <%= titulo.title %>
+                <% end %>
             </div>
         </div>
     </div>

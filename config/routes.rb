@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   
   
 
+  get 'lanchonete', to: 'lanchonetedotrom/home#index'
   root 'backoffice/dashboard#index'
   # root 'lanchonetedotrom/home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

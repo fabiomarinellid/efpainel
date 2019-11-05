@@ -1,12 +1,14 @@
 class Backoffice::Config::UserController < ApplicationController
  before_action :set_admin, only: [:edit, :update, :destroy]
+ before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
   layout "Backoffice"
   before_action :authenticate_user!
 
   def index
     @admins = User.all
-   
+
+    @admins_site_logado = User.all.where(site_id: current_user.site_id)
   end
 
   def new
@@ -23,7 +25,6 @@ class Backoffice::Config::UserController < ApplicationController
   end
 
   def edit
-    # Uses the before_action to set the admin.
   end
 
   def update
@@ -46,6 +47,10 @@ class Backoffice::Config::UserController < ApplicationController
   end
 
   private
+
+    def carregaDropdowns
+      @sites = Site.all   
+    end
 
     def set_admin
       @admin = User.find(params[:id])

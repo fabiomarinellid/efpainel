@@ -25,29 +25,30 @@
             <%= t.label "Rua", class: "form-control-label" %>
             <%= t.text_field :street, class:"form-control" %>
 	      </div>
-        <div class="form-group">
+          <div class="form-group">
             <%= t.label "Número", class: "form-control-label" %>
             <%= t.text_field :number, class:"form-control" %>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <%= t.label "Bairro", class: "form-control-label" %>
             <%= t.text_field :neighborhood, class:"form-control" %>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <%= t.label "Cidade", class: "form-control-label" %>
             <%= t.text_field :city, class:"form-control" %>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <%= t.label "Estado", class: "form-control-label" %>
             <%= t.text_field :state, class:"form-control" %>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <%= t.label "CEP", class: "form-control-label" %>
             <%= t.text_field :zipcode, class:"form-control" %>
-        </div>
+          </div>
           <div class="form-group">
-            <%= t.label "Site", class: "form-control-label" %>
-            <%= t.text_field :site_id, class:"form-control" %>
+            <%= t.label "Site", class: "form-control-label" %>   
+            <%= t.collection_select( :site_id, @sites, :id, :name, 
+            {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
           </div>
 	      <div class="form-group">       
 	        <%= t.submit "Salvar", class: "btn btn-primary" %>

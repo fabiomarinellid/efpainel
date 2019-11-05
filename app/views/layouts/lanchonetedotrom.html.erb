@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lanchonete do Trom</title>
-
+    <% Title.where(site_id: current_user.site_id).each do |titulo| %>
+      
+    <title><%= titulo.title %></title>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/1564155194400-128x129.png" type="image/x-icon">
-    <meta name="description" content="O melhor lanche de Barra Bonita">
+    <link rel="shortcut icon" href="<%= titulo.photologo %>" type="image/x-icon">
+    <meta name="description" content="<%= titulo.subtitle %>">
 
     <!-- Meta tags do Face -->
-    <meta property="og:url" content="https://lanchonetedotrom.efdigital.top/" />
+    <meta property="og:url" content="https://lanchonetedabarra.lancho.net/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Lanchonete do Trom" />
-    <meta property="og:description" content="O melhor lanche de Barra Bonita" />
+    <meta property="og:title" content="<%= titulo.title %>" />
+    <meta property="og:description" content="<%= titulo.subtitle %>" />
     <meta property="og:image" content="capa.jpg" />
-    
+    <% end %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

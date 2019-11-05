@@ -1,5 +1,6 @@
 class Backoffice::Product::CategoryController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]  
+  before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
   layout "backoffice"
 
@@ -49,6 +50,10 @@ class Backoffice::Product::CategoryController < ApplicationController
   end
 
  private
+
+    def carregaDropdowns
+      @sites = Site.all   
+    end
 
     def set_category
       @category = Category.find(params[:id])

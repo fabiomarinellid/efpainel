@@ -1,5 +1,6 @@
 class Backoffice::Product::LabelController < ApplicationController
   before_action :set_label, only: [:edit, :update, :destroy]  
+  before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
 
   layout "backoffice"
 
@@ -48,6 +49,10 @@ class Backoffice::Product::LabelController < ApplicationController
   end
 
  private
+
+    def carregaDropdowns
+      @sites = Site.all   
+    end
 
     def set_label
       @label = Label.find(params[:id])
