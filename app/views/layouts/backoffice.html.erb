@@ -156,8 +156,10 @@
         <span class="heading">Links</span>
         <ul class="list-unstyled">
           <li>
-             <%= link_to lanchonete_path do %> 
-             <i class="fas fa-link"></i>Link do site
+            <% Site.where(id: current_user.site_id).each do |site| %>
+              <%= link_to lanchonete_path(:site => "#{site.id}"), target: "_blank" do %> 
+                <i class="fas fa-link"></i>Link do site
+              <% end %>
             <% end %>
           </li>
         </ul>

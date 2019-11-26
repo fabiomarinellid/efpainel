@@ -6,9 +6,7 @@ class Backoffice::Config::UserController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @admins = User.all
-
-    @admins_site_logado = User.all.where(site_id: current_user.site_id)
+    carregaAdmins
   end
 
   def new
@@ -47,6 +45,18 @@ class Backoffice::Config::UserController < ApplicationController
   end
 
   private
+
+    def carregaAdmins
+
+      total_rows = 10
+
+      if current_user.role == 'full_access'
+        @admins = User.admins_for_all_sites(total_rows, current_user.id)
+      else
+        @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
+      end
+
+    end
 
     def carregaDropdowns
       @sites = Site.all   

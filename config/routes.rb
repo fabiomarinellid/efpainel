@@ -51,7 +51,13 @@ Rails.application.routes.draw do
   namespace :backoffice do
     namespace :config do
       resources :title, except: [:show, :destroy]
-      get 'site/index'
+      match 'title/:id' => 'title#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :config do
+      resources :site, except: [:show, :destroy]
+      match 'site/:id' => 'site#destroy', via: [:get]
     end
   end
   

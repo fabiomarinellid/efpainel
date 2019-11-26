@@ -1,7 +1,22 @@
 <div class="page-header">
   <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Configuração dos Sites</h2>
+    <h2 class="h5 no-margin-bottom">Configurações do site</h2>
+    <h3><%= notice %></h3>
   </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="block margin-bottom-sm">
+        <div class="input-group">
+          <input type="text" class="form-control">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-primary">Pesquisar</button>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
 </div>
 <div class="container-fluid">
     <div class="row">
@@ -15,6 +30,7 @@
                   <th>Nome</th>
                   <th>Descrição</th>
                   <th>Url</th>
+                  <th>Usuários</th>
                   <th style="text-align: center;">Ações</th>
                 </tr>
               </thead>
@@ -25,16 +41,25 @@
 	                  <td><%= site.name %></td>
 	                  <td><%= site.description %></td>
 	                  <td><%= site.url %></td>
+                    <td>
+                    <% site.user_ids.each do |admin_id| %>
+                      <% @admins.each do |admin| %>
+                        <% if admin.id == admin_id %>
+                          <%= admin.name %>,  
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    </td>
 	                  <td style="width: 130px; text-align: center;"> 
 	                  	<div style="float:left; margin: 1px;">
-	                  	<%= link_to backoffice_dashboard_index_path, class: "btn btn-primary" do %>
+	                  	<%= link_to edit_backoffice_config_site_path(site), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>
 	                    <% end %>
 	                    </div>
 	                    <div style="float:left; margin: 1px;">
-	                    <%= link_to backoffice_dashboard_index_path, class: "btn btn-secondary" do %>
-	                        <i class="icon-close"></i>
-	                    <% end %>
+	                    <%= link_to backoffice_config_site_path(site), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{site.name}</b>?"} do %>
+                        <i class="icon-close"></i>
+                      <% end %>
 	                    </div>
 	                  </td>
 	                </tr>
@@ -45,4 +70,15 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-lg-12">
+      <div class="block margin-bottom-sm">
+       <%= link_to new_backoffice_config_site_path, class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i>
+       <% end %>
+      </div>
+     </div>
+   </div>
   </div>
