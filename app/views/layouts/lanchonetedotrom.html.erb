@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% Title.where(site_id: current_user.site_id).each do |titulo| %>
+    <% Title.where(site_id: session[:current_site_id]).each do |titulo| %>
       
     <title><%= titulo.title %></title>
     

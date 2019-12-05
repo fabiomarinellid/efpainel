@@ -1,22 +1,24 @@
 class Lanchonetedotrom::HomeController < ApplicationController
   layout "lanchonetedotrom"
 
-  parameter = require.query_parameters['site']
-  site_id_parameter = parameter
   
   def index
 
-  	if(site_id_parameter?)
+    if params[:site].blank? 
 
-  		@titulos = Title.all.where(site_id: site_id_parameter)
-  	    @phones = Phone.all.where(site_id: site_id_parameter)
-  	    @addresses = Address.all.where(site_id: site_id_parameter)
+    	session[:current_site_id] = Site.first
+
+  		@titulos = Title.all.where(site_id: Site.first)
+  	    @phones = Phone.all.where(site_id: Site.first)
+  	    @addresses = Address.all.where(site_id: Site.first)
   		
   	else
 
-  		@titulos = Title.all.where(site_id: Site.id.first)
-  	    @phones = Phone.all.where(site_id: Site.id.first)
-  	    @addresses = Address.all.where(site_id: Site.id.first)
+        session[:current_site_id] = params[:site]
+
+  	    @titulos = Title.all.where(site_id: params[:site])
+  	    @phones = Phone.all.where(site_id: params[:site])
+  	    @addresses = Address.all.where(site_id: params[:site])
 
   	end
   	

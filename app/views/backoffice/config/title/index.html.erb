@@ -23,7 +23,7 @@
                 </tr>
               </thead>
               <tbody>
-              	<% @titulos_site_logado.each do |titulo| %>
+              	<% @titulos.each do |titulo| %>
 	                <tr>
 	                  <th scope="row"><%= titulo.id %></th>
 	                  <td><%= titulo.title %></td>
@@ -46,3 +46,15 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-lg-12">
+      <div class="block margin-bottom-sm">
+       <%= link_to new_backoffice_config_title_path, class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i>
+       <% end %>
+      </div>
+     </div>
+   </div>
+  </div>
