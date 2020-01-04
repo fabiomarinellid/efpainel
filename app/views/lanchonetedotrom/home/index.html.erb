@@ -63,429 +63,73 @@
     </div>
 </section>
 
-<section class="services2 cid-rxkNp1iSdO" id="services2-2">
-    <!---->
-    
-    <!---->
-    <!--Overlay-->
-    
-    <!--Container-->
-    <div class="container">
-        <div class="col-md-12">
-            <div class="media-container-row">
-                <div class="mbr-figure" style="width: 50%;">
-                	<%= image_tag("lanchonetedotrom/66887921-796548330739465-321504797758849024-n-952x536.jpg", :alt => "Lanchonete do Trom") %>
-                </div>
-                <div class="align-left aside-content">
-                    <h2 class="mbr-title pt-2 mbr-fonts-style display-2">
-                        X-LINGUIÇA</h2>
-                    <div class="mbr-section-text">
-                        <p class="mbr-text text1 pt-2 mbr-light mbr-fonts-style display-7">
-                            lanche de linguiça em tablete e também de legumes,&nbsp;linguiça de 120g, 2 queijo, tomate e alface</p>
-                        <p class="mbr-text text2 pt-4 mbr-light mbr-fonts-style display-2">R$ 13,00</p>
+<% if @bestproducts.count >= 1 %>
+        <section class="services2 cid-rxkNp1iSdO" id="services2-2">
+            <div class="container">
+                <div class="col-md-12">
+                  <% @bestproducts.each do |produto| %>
+                    <div class="media-container-row">
+                      
+                        <div class="mbr-figure" style="width: 50%;">
+                        	<%= image_tag("lanchonetedotrom/66887921-796548330739465-321504797758849024-n-952x536.jpg", :alt => "Lanchonete do Trom") %>
+                        </div>
+                        <div class="align-left aside-content">
+                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2"><%= produto.name %></h2>
+                            <div class="mbr-section-text">
+                                <p class="mbr-text text1 pt-2 mbr-light mbr-fonts-style display-7">
+                                    <%= produto.description %></p>
+                                <p class="mbr-text text2 pt-4 mbr-light mbr-fonts-style display-2"><%= humanized_money_with_symbol produto.price %></p>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <!--Btn-->
-                    <div class="mbr-section-btn pt-3 align-left"><a href="http://bit.ly/WhatsLanchoneteTrom" class="btn btn-warning-outline display-4">
-                            Pedir agora</a></div>
+                    <div style="padding: 15px;"></div>
+                  <% end %>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+<% end %>
 
 <section class="services3 cid-rxkQgxY2Bs" id="services3-6">
-    <!---->
-    
-    <!---->
-    <!--Overlay-->
-    
-    <!--Container-->
+   
     <div class="container">
         <div class="row">
             <!--Titles-->
             <div class="title pb-5 col-12">
-                <h2 class="align-left mbr-fonts-style display-1">
-                    Cardápio</h2>
-                
+                <h2 class="align-left mbr-fonts-style display-1">Cardápio</h2>
             </div>
-            <!--Card-1-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-1">
-                            <h4 class="card-title mbr-fonts-style display-5">HOT DOG</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 5,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                 salsicha, vinagrete, alface e batata palha
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-2-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">DOG DUPLO</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 7,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                 2 salsichas, alface e batata palha
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-3-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">DOG BRABO</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 10,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                2 salsichas, vinagrete, presunto, queilo, alface e batata palha
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-4-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">DOG BURGUER</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 12,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                salsicha, carne, vinagrete, presunto, queijo, alface e batata palha
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-5-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                HAMBURGUER
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 6,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, vinagrete e alface
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-6-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-BURGUER
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 8,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, presunto e queijo
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-7-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-PICANHA
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 13,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                 carne de 120g, 2 queijo, tomate e alface
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-8-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-LINGUIÇA</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 13,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                linguiça de 120g, 2 queijo, tomate e alface
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-9-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-SALADA
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 9,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, alface, vinagrete, presunto e queijo
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-10-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-BACON
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 12,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, bacon, alface, vinagrete, presunto e queijo
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-11-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-CALABRESA
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 12,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, calabresa, alface, vinagrete, presunto e queijo
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-12-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-EGG
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 12,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, ovo, alface, vinagrete, presunto e queijo
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="services3 cid-rxotyrHhG8" id="services3-a">
-    <!---->
-    
-    <!---->
-    <!--Overlay-->
-    
-    <!--Container-->
-    <div class="container">
-        <div class="row">
-            <!--Titles-->
-            <div class="title pb-5 col-12">
-                
-                
-            </div>
-            <!--Card-1-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-1">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-TUDO
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 16,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne, bacon, calabresa, ovo, alface, salsicha, vinagrete, presunto e queijo
-                            </p>
+            <% @categories.each do |categoria| %>
+              <div class="title pb-5 col-12">
+                <h5><%= categoria.category.description %></h5>
+              </div> 
+
+                <% @products.each do |produto| %>
+                  <% if produto.category_id == categoria.category_id %>
+                    <div class="card px-3 col-12 col-md-6">
+                        <div class="card-wrapper media-container-row media-container-row">
+                            <div class="card-box">
+                                <div class="top-line pb-1">
+                                    <h4 class="card-title mbr-fonts-style display-5"><%= produto.name %></h4>
+                                    <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
+                                        <%= humanized_money_with_symbol produto.price %></p>
+                                </div>
+                                <div class="bottom-line">
+                                    <p class="mbr-text mbr-fonts-style display-7">
+                                         <%= produto.description %>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--Card-2-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">MISTO QUENTE</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 10,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                4 presunto, 4 queijo e tomate
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-3-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">MISTO BURGUER</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 12,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                Carne, 3 presunto, 3 queijo e tomate
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-4-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">BAURU DE CARNE</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 24,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                450g de contra filé, queijo, tomate, pão de 30cm
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-5-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">BAURU DE LOMBO</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 24,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                450g de lombo, queijo, tomate, cebola refogada, pão de 30cm
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-6-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">BAURU DE FRANGO</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 24,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                450g de frango, queijo, tomate, pão de 30cm
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-7-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                X-COSTELA
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
-                                R$ 15,00</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                carne de 150g, 2 queijo, tomate e alface
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-8-->
-            
-            <!--Card-9-->
-            
-            <!--Card-10-->
-            
-            <!--Card-11-->
-            
-            <!--Card-12-->
-            
+                  <% end %>    
+                <% end %>
+             <% end %> 
         </div>
     </div>
 </section>
 
 <section class="mbr-section article content9 cid-rxoztc1Adq" id="content9-c">
-    
-     
-
     <div class="container">
         <div class="inner-container" style="width: 100%;">
             <hr class="line" style="width: 50%;">
@@ -495,68 +139,6 @@
         </div>
 </section>
 
-<section class="mbr-section article content9 cid-rxozvBzR9I" id="content9-d">
-    
-     
-
-    <div class="container">
-        <div class="inner-container" style="width: 100%;">
-            <hr class="line" style="width: 10%;">
-            <div class="section-text align-center mbr-fonts-style display-5">ACRÉSCIMOS: carne R$ 2, presunto e queijo R$ 3, batata palha R$ 1, bacon R$ 3,<div>calabresa R$ 3, salsicha R$ 2, ovo R$ 2, cheddar R$ 2, catupiri R$ 2, milho R$ 1</div></div>
-            <hr class="line" style="width: 10%;">
-        </div>
-        </div>
-</section>
-
-<section class="services3 cid-rxoBVayXdu" id="services3-e">
-    <!---->
-    
-    <!---->
-    <!--Overlay-->
-    
-    <!--Container-->
-    <div class="container">
-        <div class="row">
-            <!--Titles-->
-            <div class="title pb-5 col-12">
-                
-                
-            </div>
-            <!--Card-1-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-1">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                REFRIGERANTES</h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">&nbsp; &nbsp; &nbsp;</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">600 ml, 1 e 2 Lts<br>Tubaina, Lata e Caçulina</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-2-->
-            <div class="card px-3 col-12 col-md-6">
-                <div class="card-wrapper media-container-row media-container-row">
-                    <div class="card-box">
-                        <div class="top-line pb-3">
-                            <h4 class="card-title mbr-fonts-style display-5">
-                                CERVEJAS
-                            </h4>
-                            <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">&nbsp; &nbsp;</p>
-                        </div>
-                        <div class="bottom-line">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                Litrão, Lata e 600 ml</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9">
 

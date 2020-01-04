@@ -3,25 +3,27 @@ class Lanchonetedotrom::HomeController < ApplicationController
 
   
   def index
-
     if params[:site].blank? 
-
-    	session[:current_site_id] = Site.first
-
-  		@titulos = Title.all.where(site_id: Site.first)
-  	    @phones = Phone.all.where(site_id: Site.first)
-  	    @addresses = Address.all.where(site_id: Site.first)
-  		
+        CarregarSite(Site.first)
   	else
-
-        session[:current_site_id] = params[:site]
-
-  	    @titulos = Title.all.where(site_id: params[:site])
-  	    @phones = Phone.all.where(site_id: params[:site])
-  	    @addresses = Address.all.where(site_id: params[:site])
-
+        CarregarSite(params[:site])
+        if @titulos.blank?
+          CarregarSite(Site.first)
+        end
   	end
-  	
-  
   end
+
+  private
+
+  def CarregarSite(siteParam)
+    session[:current_site_id] = siteParam
+
+    @titulos = Title.all.where(site_id: siteParam)
+    @phones = Phone.all.where(site_id: siteParam)
+    @addresses = Address.all.where(site_id: siteParam)
+    @bestproducts = Item.all.where(bestseller: :highlight, site_id: siteParam)
+    @categories = Item.all.where(active: :enable, site_id: siteParam).group("category_id")
+    @products = Item.all.where(active: :enable, site_id: siteParam)
+  end
+
 end
