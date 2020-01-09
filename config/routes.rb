@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   
   namespace :backoffice do
     namespace :product do
+      resources :observation, except: [:show]
+      match 'observation/:id' => 'observation#destroy', via: [:get]
+    end
+  end
+  namespace :backoffice do
+    namespace :product do
       resources :item, except: [:show]
       match 'item/:id' => 'item#destroy', via: [:get]
     end

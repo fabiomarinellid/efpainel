@@ -135,6 +135,11 @@
                  <i class="fas fa-hamburger"></i>Produtos
                 <% end %>
               </li>
+               <li class="<%= controller.controller_name == "observation" ? 'active' : '' %>">
+                 <%= link_to backoffice_product_observation_index_path do %> 
+                 <i class="fas fa-exclamation"></i>Observação
+                <% end %>
+              </li>
             </ul>
         </li>
         <li>

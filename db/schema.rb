@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_212017) do
+ActiveRecord::Schema.define(version: 2020_01_06_151957) do
 
   create_table "abouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "description"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2019_11_03_212017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["site_id"], name: "index_labels_on_site_id"
+  end
+
+  create_table "observations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "description"
+    t.integer "status"
+    t.bigint "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_observations_on_site_id"
   end
 
   create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -125,6 +134,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_212017) do
   add_foreign_key "items", "labels"
   add_foreign_key "items", "sites"
   add_foreign_key "labels", "sites"
+  add_foreign_key "observations", "sites"
   add_foreign_key "phones", "sites"
   add_foreign_key "titles", "sites"
   add_foreign_key "users", "sites"

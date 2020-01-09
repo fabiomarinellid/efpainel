@@ -91,12 +91,11 @@
 <% end %>
 
 <section class="services3 cid-rxkQgxY2Bs" id="services3-6">
-   
     <div class="container">
         <div class="row">
             <!--Titles-->
             <div class="title pb-5 col-12">
-                <h2 class="align-left mbr-fonts-style display-1">Cardápio</h2>
+                <h2 class="align-center mbr-fonts-style display-1">Cardápio</h2>
             </div>
 
             <% @categories.each do |categoria| %>
@@ -127,17 +126,24 @@
              <% end %> 
         </div>
     </div>
-</section>
-
-<section class="mbr-section article content9 cid-rxoztc1Adq" id="content9-c">
     <div class="container">
         <div class="inner-container" style="width: 100%;">
             <hr class="line" style="width: 50%;">
             <div class="section-text align-center mbr-fonts-style display-5">CATCHUP, MOSTARDA E MAIONESE EM TODOS OS LANCHES, PODENDO TROCAR<div>O VINAGRETE POR RODELAS DE TOMATE E A ALFACE POR RÚCULA</div></div>
             <hr class="line" style="width: 50%;">
         </div>
+    </div>
+<% if @products.count == 0 %>
+     <div class="container">
+        <div class="inner-container" style="width: 100%;">
+            <hr class="line" style="width: 50%;">
+            <div class="section-text align-center mbr-fonts-style display-5">NOSSO CARDÁPIO ESTA EM MANUTENÇÃO, ENTRE EM CONTATO CONOSCO PARA FAZER SEU PEDIDO!</div></div>
+            <hr class="line" style="width: 50%;">
         </div>
+    </div>
+<% end %>
 </section>
+
 
 
 <section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9">

@@ -1,0 +1,45 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Nova Observação</h2>
+  </div>
+</div>
+
+<% if @observation.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+    <ul>
+        <% @observation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+
+    </div>
+<% end %>
+
+<div class="col-lg-12">
+	<div class="block">
+	  <div class="block-body">
+	    <%= form_for @observation, url: backoffice_product_observation_index_path do |t| %>
+	      <div class="form-group">
+            <%= t.label "Descrição", class: "form-control-label" %>
+            <%= t.text_field :description, class:"form-control" %>
+	      </div>
+        <div class="form-group">
+	        <div class="i-checks">
+	            <%= t.check_box(:active, { class: "checkbox-template" }, "disable", "enable") %>
+	            <%= t.label "Não mostrar Observação no cardápio" %>
+	         </div>
+        </div>
+        <div class="form-group">
+            <%= t.label "Site", class: "form-control-label" %>   
+            <%= t.collection_select( :site_id, @sites, :id, :name, 
+            {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+        </div>
+	      <div class="form-group">       
+	        <%= t.submit "Salvar", class: "btn btn-primary" %>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+</div>
