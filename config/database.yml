@@ -51,7 +51,7 @@ test:
 
 
 ########## Para deploy no heroku ##########
- production:
+production:
   url: <%= ENV['DATABASE_URL'] %>
   
   # Comando abaixo para rodar depois do deploy
