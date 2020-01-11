@@ -49,7 +49,6 @@ test:
 #
 
 
-
 ########## Para deploy no heroku ##########
 production:
   url: <%= ENV['DATABASE_URL'] %>

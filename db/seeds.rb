@@ -26,6 +26,15 @@ User.create(
   role: 0
 )
 
+User.create(
+  email: "user@admin.com",
+  password: "123456",
+  password_confirmation: "123456",
+  site_id: 1,
+  name: "Admin",
+  role: 1
+)
+
 puts "ADMINISTRADOR cadastrado com sucesso!"
 
 
