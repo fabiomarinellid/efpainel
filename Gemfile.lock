@@ -223,6 +223,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  bundler (>= 2.0.2)
   byebug
   carrierwave (~> 2.0)
   coffee-rails (~> 4.2)

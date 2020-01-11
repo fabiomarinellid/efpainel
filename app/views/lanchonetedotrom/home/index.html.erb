@@ -93,16 +93,13 @@
 <section class="services3 cid-rxkQgxY2Bs" id="services3-6">
     <div class="container">
         <div class="row">
-            <!--Titles-->
             <div class="title pb-5 col-12">
                 <h2 class="align-center mbr-fonts-style display-1">Cardápio</h2>
             </div>
-
             <% @categories.each do |categoria| %>
               <div class="title pb-5 col-12">
                 <h5><%= categoria.category.description %></h5>
               </div> 
-
                 <% @products.each do |produto| %>
                   <% if produto.category_id == categoria.category_id %>
                     <div class="card px-3 col-12 col-md-6">
@@ -137,7 +134,7 @@
      <div class="container">
         <div class="inner-container" style="width: 100%;">
             <hr class="line" style="width: 50%;">
-            <div class="section-text align-center mbr-fonts-style display-5">NOSSO CARDÁPIO ESTA EM MANUTENÇÃO, ENTRE EM CONTATO CONOSCO PARA FAZER SEU PEDIDO!</div></div>
+            <div class="section-text align-center mbr-fonts-style display-5">NOSSO CARDÁPIO ESTA EM MANUTENÇÃO, ENTRE EM CONTATO CONOSCO PARA FAZER SEU PEDIDO!</div>
             <hr class="line" style="width: 50%;">
         </div>
     </div>
