@@ -47,8 +47,4 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: ef-painel-v3_production
-  username: ef-painel-v3
-  password: <%= ENV['EF-PAINEL-V3_DATABASE_PASSWORD'] %>
+
