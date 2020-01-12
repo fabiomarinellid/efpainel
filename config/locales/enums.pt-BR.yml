@@ -10,4 +10,8 @@
         disable: Não
       bestseller: 
         highlight: Sim
-        not_highlight: Não  
+        not_highlight: Não
+    observation:
+      active: 
+        enable: Sim
+        disable: Não

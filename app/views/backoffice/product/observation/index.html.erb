@@ -22,7 +22,7 @@
               <tbody>
               	<% @observations.each do |observation| %>
 	                <tr>
-	                  <th scope="row"><%= label.id %></th>
+	                  <th scope="row"><%= observation.id %></th>
 	                  <td><%= observation.description %></td>
 	                  <td><%= observation.active_i18n %></td>
 	                  <td><%= observation.site.name %></td>
@@ -30,7 +30,7 @@
 	                  	<%= link_to edit_backoffice_product_observation_path(observation), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>
 	                    <% end %>
-	                    <%= link_to backoffice_product_observation_path(observation), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{Observation.id}</b>?"} do %>
+	                    <%= link_to backoffice_product_observation_path(observation), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{observation.id}</b>?"} do %>
 	                    	<i class="icon-close"></i>
 	                        <% end %>
 	                  </td>

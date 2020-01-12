@@ -3,12 +3,12 @@
     <h2 class="h5 no-margin-bottom">Alterar Observação</h2>
   </div>
 </div>
-<% if @Observation.errors.any? %>
+<% if @observation.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
     <ul>
-        <% @Observation.errors.full_messages.each do |message| %>
+        <% @observation.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
     </ul>
@@ -18,7 +18,7 @@
 <div class="col-lg-12">
 	<div class="block">
 	  <div class="block-body">
-	    <%= form_for([:backoffice, :product, @Observation]) do |t| %>
+	    <%= form_for([:backoffice, :product, @observation]) do |t| %>
 	      <div class="form-group">
             <%= t.label "Descrição", class: "form-control-label" %>
             <%= t.text_field :description, class:"form-control" %>

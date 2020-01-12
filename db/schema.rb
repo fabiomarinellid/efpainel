@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_151957) do
 
   create_table "observations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "description"
-    t.integer "status"
+    t.integer "active"
     t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

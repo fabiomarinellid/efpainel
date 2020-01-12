@@ -31,7 +31,7 @@ User.create(
   password: "123456",
   password_confirmation: "123456",
   site_id: 1,
-  name: "Admin",
+  name: "User",
   role: 1
 )
 
