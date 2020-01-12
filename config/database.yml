@@ -48,14 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: ef-painel-v3_production
-  secret_key_base: xxxxxxxxxxxxxxxxxxxxxxx
-
-
-########## Para deploy no heroku ##########
-# production:
-  #url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   
   # Comando abaixo para rodar depois do deploy
   # heroku run 'rake db:setup'
