@@ -16,7 +16,7 @@ class Backoffice::Product::ObservationController < ApplicationController
   def create
     @observation = Observation.new(params_observation)
     if @observation.save
-      redirect_to backoffice_product_observation_index_path, notice: "Observação #{@observation.name} salvo com sucesso"
+      redirect_to backoffice_product_observation_index_path, notice: "Observação #{@observation.description} salvo com sucesso"
     else
       render :new
     end

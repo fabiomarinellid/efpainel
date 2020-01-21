@@ -52,3 +52,11 @@ Category.create(description: 'Porções', site: Site.first)
 Category.create(description: 'Combo', site: Site.first)
 
 puts "CATEGORIAS cadastradas com sucesso!"
+
+puts "Cadastrando os RÓTULOS..."
+
+Label.create(name: '', description: 'Não adicionar rótulos', site: Site.first)
+Label.create(name: 'Novo', description: 'Produtos novos', site: Site.first)
+Label.create(name: 'Promoção', description: 'Produtos em promoção', site: Site.first)
+
+puts "RÓTULOS cadastradas com sucesso!"

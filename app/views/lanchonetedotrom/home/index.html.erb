@@ -49,7 +49,9 @@
                  <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1"><%= titulo.subtitle %></h1>
                  <p class="mbr-text pb-3 mbr-fonts-style display-5"><%= titulo.text %></p>
                  <div class="mbr-section-btn">
+                  <% if @bestproducts.count >= 1 %>
                     <a class="btn btn-md btn-primary display-4" href="index.html#services2-2"><%= titulo.bestsellername %></a>
+                  <% end %>
                     <a class="btn btn-md btn-white-outline display-4" href="index.html#services3-6">CARDÁPIO</a>
                  </div>
                 <% end %>
@@ -57,7 +59,7 @@
         </div>
     </div>
     <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-        <a href="index.html#services2-2">
+        <a href="#">
             <i class="mbri-down mbr-iconfont"></i>
         </a>
     </div>
@@ -123,18 +125,13 @@
              <% end %> 
         </div>
     </div>
+<% @observations.each do |observation| %>
     <div class="container">
         <div class="inner-container" style="width: 100%;">
             <hr class="line" style="width: 50%;">
-            <div class="section-text align-center mbr-fonts-style display-5">CATCHUP, MOSTARDA E MAIONESE EM TODOS OS LANCHES, PODENDO TROCAR<div>O VINAGRETE POR RODELAS DE TOMATE E A ALFACE POR RÚCULA</div></div>
-            <hr class="line" style="width: 50%;">
-        </div>
-    </div>
-<% if @products.count == 0 %>
-     <div class="container">
-        <div class="inner-container" style="width: 100%;">
-            <hr class="line" style="width: 50%;">
-            <div class="section-text align-center mbr-fonts-style display-5">NOSSO CARDÁPIO ESTA EM MANUTENÇÃO, ENTRE EM CONTATO CONOSCO PARA FAZER SEU PEDIDO!</div>
+            <div class="section-text align-center mbr-fonts-style display-5">
+               <%= observation.description %>
+            </div></div>
             <hr class="line" style="width: 50%;">
         </div>
     </div>
@@ -143,7 +140,7 @@
 
 
 
-<section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9">
+<section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9" style="top:60px;">
 
     <div>
         <div><!-- Filter --><!-- Gallery --><div class="mbr-gallery-row"><div class="mbr-gallery-layout-default"><div><div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica"><div href="#lb-gallery3-9" data-slide-to="0" data-toggle="modal">

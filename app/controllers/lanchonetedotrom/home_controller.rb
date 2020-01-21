@@ -3,12 +3,18 @@ class Lanchonetedotrom::HomeController < ApplicationController
 
   
   def index
-    if params[:site].blank? 
+
+    if request.subdomain.blank?
+    #if params[:site].blank? 
         CarregarSite(Site.first)
   	else
-        CarregarSite(params[:site])
-        if @titulos.blank?
-          CarregarSite(Site.first)
+        if request.subdomain == 'chapadaburguer'
+         CarregarSite(2)
+        else 
+        #CarregarSite(params[:site])
+          if @titulos.blank?
+            CarregarSite(Site.first)
+          end
         end
   	end
   end
@@ -24,6 +30,7 @@ class Lanchonetedotrom::HomeController < ApplicationController
     @bestproducts = Item.all.where(bestseller: :highlight, site_id: siteParam)
     @categories = Item.all.where(active: :enable, site_id: siteParam).group("category_id")
     @products = Item.all.where(active: :enable, site_id: siteParam)
+    @observations = Observation.all.where(active: :enable, site_id: siteParam)
   end
 
 end

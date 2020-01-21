@@ -14,6 +14,7 @@
     <%= stylesheet_link_tag 'backoffice/application', media: 'all' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -161,11 +162,9 @@
         <span class="heading">Links</span>
         <ul class="list-unstyled">
           <li>
-            <% Site.where(id: current_user.site_id).each do |site| %>
-              <%= link_to lanchonete_path(:site => "#{site.id}"), target: "_blank" do %> 
+           
                 <i class="fas fa-link"></i>Link do site
-              <% end %>
-            <% end %>
+            
           </li>
         </ul>
       </nav>

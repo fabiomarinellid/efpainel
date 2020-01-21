@@ -48,15 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: ef-painel-v3_production
-  username: ef-painel-v3
-  password: <%= ENV['EF-PAINEL-V3_DATABASE_PASSWORD'] %>
-
-
-########## Para deploy no heroku ##########
-# production:
-  #url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   
 #exclusão e criação do banco
 # heroku run rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
