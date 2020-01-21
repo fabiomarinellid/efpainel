@@ -9,7 +9,7 @@ class Lanchonetedotrom::HomeController < ApplicationController
         CarregarSite(Site.first)
   	else
         if request.subdomain == 'chapadaburguer'
-         CarregarSite(2)
+         CarregarSite(11)
         else 
         #CarregarSite(params[:site])
           if @titulos.blank?
