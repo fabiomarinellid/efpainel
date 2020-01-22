@@ -4,19 +4,17 @@ class Lanchonetedotrom::HomeController < ApplicationController
   
   def index
 
-    if request.subdomain.blank?
-    #if params[:site].blank? 
+    Site.all.each do |site|
+
+      if request.subdomain == site.url
+       CarregarSite(site.id)
+       return
+      else
         CarregarSite(Site.first)
-  	else
-        if request.subdomain == 'chapadaburguer'
-         CarregarSite(11)
-        else 
-        #CarregarSite(params[:site])
-          if @titulos.blank?
-            CarregarSite(Site.first)
-          end
-        end
-  	end
+      end
+
+    end
+
   end
 
   private

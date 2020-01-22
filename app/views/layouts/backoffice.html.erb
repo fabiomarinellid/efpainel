@@ -138,7 +138,7 @@
               </li>
                <li class="<%= controller.controller_name == "observation" ? 'active' : '' %>">
                  <%= link_to backoffice_product_observation_index_path do %> 
-                 <i class="fas fa-exclamation"></i>Observação
+                 <i class="fas fa-exclamation"></i>Obs
                 <% end %>
               </li>
             </ul>
@@ -162,9 +162,9 @@
         <span class="heading">Links</span>
         <ul class="list-unstyled">
           <li>
-           
+           <%= link_to  root_path, target: "_blank"  do %> 
                 <i class="fas fa-link"></i>Link do site
-            
+            <% end %>
           </li>
         </ul>
       </nav>
