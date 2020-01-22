@@ -16,9 +16,10 @@ class Backoffice::Config::SiteController < ApplicationController
   end
 
   def create
-    @site = Site.new(params_site)
-    if @site.save
-      redirect_to backoffice_config_site_index_path
+    @site = SiteService.create(params_site)
+
+    unless @site.errors.any?
+      redirect_to backoffice_config_site_index_path, notice: "Novo site cadastrado com sucesso"
     else
       render :new
     end

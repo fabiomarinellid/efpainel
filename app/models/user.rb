@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   belongs_to :site
+  has_many :sites
 
   enum role: {:full_access => 0, :restricted_access => 1}
 
