@@ -21,7 +21,7 @@
 	    <%= form_for([:backoffice, :product, @observation]) do |t| %>
 	      <div class="form-group">
             <%= t.label "Descrição", class: "form-control-label" %>
-            <%= t.text_field :description, class:"form-control" %>
+            <%= t.text_area :description, class:"form-control", rows:"5" %>
 	      </div>
 	      <div class="form-group">
             <div class="i-checks">

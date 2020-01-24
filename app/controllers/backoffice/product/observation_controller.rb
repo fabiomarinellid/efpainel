@@ -16,7 +16,7 @@ class Backoffice::Product::ObservationController < ApplicationController
   def create
     @observation = Observation.new(params_observation)
     if @observation.save
-      redirect_to backoffice_product_observation_index_path, notice: "Observação #{@observation.description} salvo com sucesso"
+      redirect_to backoffice_product_observation_index_path, notice: "Observação n° #{@observation.id} salvo com sucesso"
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Backoffice::Product::ObservationController < ApplicationController
   def update
   	set_observation
     if @observation.update(params_observation)
-      redirect_to backoffice_product_observation_index_path, notice: "Observação #{@observation.id} alterado com sucesso"
+      redirect_to backoffice_product_observation_index_path, notice: "Observação n° #{@observation.id} alterado com sucesso"
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Backoffice::Product::ObservationController < ApplicationController
     observation_id = @observation.id
 
     if @observation.destroy
-      redirect_to backoffice_product_observation_index_path, notice: "Observação #{observation_id} excluido com sucesso"
+      redirect_to backoffice_product_observation_index_path, notice: "Observação n° #{@observation.id} excluido com sucesso"
     else
       render :index
     end

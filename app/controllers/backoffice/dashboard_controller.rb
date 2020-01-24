@@ -11,6 +11,12 @@ class Backoffice::DashboardController < ApplicationController
 	    @admins_count = User.admins_count_for_site(current_user.site_id)
 	  end
 
+	  if current_user.role == 'full_access'
+	    @products_count = Item.products_count
+	  else
+	    @products_count = Item.products_count_for_site(current_user.site_id)
+	  end
+
   end
 
 end

@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   
   
   root 'lanchonetedotrom/home#index'
+  get 'lancho', to: 'lanchonetedotrom/home#index'
   get 'efpainel', to: 'backoffice/dashboard#index'
 
   match '', to: 'lanchonetedotrom/home#index', via: [:post], constraints: {subdomain: /.+/} 

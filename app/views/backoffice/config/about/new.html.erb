@@ -23,7 +23,7 @@
 	    <%= form_for @about, url: backoffice_config_about_index_path do |t| %>
 	      <div class="form-group">
             <%= t.label "Descrição", class: "form-control-label" %>
-            <%= t.text_area :description, class:"form-control" %>
+            <%= t.text_area :description, class:"form-control", rows:"10" %>
 	      </div>
         <div class="form-group">
             <%= t.label "Site", class: "form-control-label" %>   

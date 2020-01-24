@@ -176,9 +176,9 @@
                     <a href="https://www.facebook.com/Lanchonete-do-Trom-715641808830118/" target="_blank">
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
                     </a>
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flanchonetedotrom.efdigital.top%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-                    	<span class="px-2 mbr-iconfont mbr-iconfont-social socicon-sharethis socicon"></span>
-                    </a>
+                    <%= link_to "https://www.facebook.com/sharer/sharer.php?u=" + "#{ root_path }" + "&src=sdkpreparse", target: "_blank", class: "fb-xfbml-parse-ignore" do %>
+                        <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-sharethis socicon"></span>
+                    <% end %>
                 </div>
             </div>
         </div>
