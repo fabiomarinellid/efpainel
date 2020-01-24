@@ -170,13 +170,13 @@
             <div class="col-md-8 align-center">
                 
                 <div class="social-list pl-0 mb-0">
-                    <a href="index.html#social-buttons2-5" target="_blank">
+                    <%= link_to "" + "#{ root_path }" + "", target: "_blank" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
-                    </a>
-                    <a href="https://www.facebook.com/Lanchonete-do-Trom-715641808830118/" target="_blank">
+                    <% end %>
+                    <%= link_to "" + "#{ root_path }" + "", target: "_blank" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
-                    </a>
-                    <%= link_to "https://www.facebook.com/sharer/sharer.php?u=" + "#{ root_path }" + "&src=sdkpreparse", target: "_blank", class: "fb-xfbml-parse-ignore" do %>
+                    <% end %>
+                    <%= link_to "https://www.facebook.com/sharer/sharer.php?u=" + "#{ request.url }" + "&src=sdkpreparse", target: "_blank", class: "fb-xfbml-parse-ignore" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-sharethis socicon"></span>
                     <% end %>
                 </div>
