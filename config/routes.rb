@@ -77,13 +77,9 @@ Rails.application.routes.draw do
   
   
   root 'lanchonetedotrom/home#index'
-  get 'lancho', to: 'lanchonetedotrom/home#index'
   get 'efpainel', to: 'backoffice/dashboard#index'
 
   match '', to: 'lanchonetedotrom/home#index', via: [:post], constraints: {subdomain: /.+/} 
-
-  #get 'lanchonete', to: 'lanchonetedotrom/home#index'
-  #root 'backoffice/dashboard#index'
-  # root 'lanchonetedotrom/home#index'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -34,6 +34,6 @@ module EfPainelV3
 
     config.i18n.default_locale = :"pt-BR"
 
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
   end
 end
