@@ -12,11 +12,11 @@
     <meta name="description" content="<%= titulo.subtitle %>">
 
     <!-- Meta tags do Face -->
-    <meta property="og:url" content="https://lanchonetedabarra.lancho.net/" />
+    <meta property="og:url" content="<%= request.url %>" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<%= titulo.title %>" />
     <meta property="og:description" content="<%= titulo.subtitle %>" />
-    <meta property="og:image" content="capa.jpg" />
+    <meta property="og:image" content="<%= titulo.photologo %>" />
     <% end %>
 
     <%= csrf_meta_tags %>
