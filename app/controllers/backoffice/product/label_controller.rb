@@ -59,6 +59,6 @@ class Backoffice::Product::LabelController < ApplicationController
     end
 
     def params_label
-        params.require(:label).permit(:name, :description, :site_id)
+        params.require(:label).permit(:name, :description, :site_id, :color)
     end
 end

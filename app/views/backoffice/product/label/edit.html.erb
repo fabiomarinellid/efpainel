@@ -25,8 +25,37 @@
 	      </div>
 	      <div class="form-group">
             <%= t.label "Descrição", class: "form-control-label" %>
-            <%= t.text_field :description, class:"form-control" %>
+            <%= t.text_area :description, class:"form-control" %>
 	      </div>
+         <div class="form-group">
+            <%= t.label "Cor para etiqueta" %><br>
+            <div class="btn-group-horizontal" data-toggle="buttons">
+              <%= t.label "Cores", class: "btn btn-primary btn-sm active" do %>
+                <%= t.radio_button :color, :primary, checked: true %>
+                Azul
+              <% end %>
+              <%= t.label "Cores", class: "btn btn-success btn-sm" do %>
+                <%= t.radio_button :color, :success %>
+                Verde
+              <% end %>
+              <%= t.label "Cores", class: "btn btn-warning btn-sm" do %>
+                <%= t.radio_button :color, :warning %>
+                Amarelo
+              <% end %>
+              <%= t.label "Cores", class: "btn btn-danger btn-sm" do %>
+                <%= t.radio_button :color, :danger%>
+                Vermelho
+              <% end %>
+              <%= t.label "Cores", class: "btn btn-dark btn-sm" do %>
+                <%= t.radio_button :color, :dark %>
+                Preto
+              <% end %>
+              <%= t.label "Cores", class: "btn btn-light btn-sm" do %>
+                <%= t.radio_button :color, :light %>
+                Cinza
+              <% end %>
+            </div>
+          </div>
 	      <div class="form-group">
             <%= t.label "Site", class: "form-control-label" %>   
             <%= t.collection_select( :site_id, @sites, :id, :name, 

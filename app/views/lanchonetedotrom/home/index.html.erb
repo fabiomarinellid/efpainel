@@ -117,6 +117,10 @@
                                          <%= produto.description %>
                                     </p>
                                 </div>
+                                <div class="bottom-line">
+                                    <div class="badge color-label has-tooltip" data-html="true" style="background-color: <%= produto.label.name.blank? ? '' : produto.label.color_i18n %>; color: <%= (produto.label.color != "warning" && produto.label.color != "light") ? '#ffffff' : '#212529' %>", title="<%= produto.label.description %>"><%= produto.label.name %>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
