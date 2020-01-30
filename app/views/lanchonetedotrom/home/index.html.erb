@@ -30,7 +30,7 @@
                         
                         Endereço</a>
                 </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="http://bit.ly/WhatsLanchoneteTrom"><span class="socicon socicon-whatsapp mbr-iconfont mbr-iconfont-btn"></span>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="#"><span class="socicon socicon-whatsapp mbr-iconfont mbr-iconfont-btn"></span>
                     
                     <%= titulo.principalbuttondescription %></a></div>
         </div>
@@ -71,9 +71,8 @@
                 <div class="col-md-12">
                   <% @bestproducts.each do |produto| %>
                     <div class="media-container-row">
-                      
                         <div class="mbr-figure" style="width: 50%;">
-                        	<%= image_tag("lanchonetedotrom/66887921-796548330739465-321504797758849024-n-952x536.jpg", :alt => "Lanchonete do Trom") %>
+                        	<%= image_tag("lanchonetedotrom/combo.jpg", :alt => "") %>
                         </div>
                         <div class="align-left aside-content">
                             <h2 class="mbr-title pt-2 mbr-fonts-style display-2"><%= produto.name %></h2>
@@ -82,10 +81,18 @@
                                     <%= produto.description %></p>
                                 <p class="mbr-text text2 pt-4 mbr-light mbr-fonts-style display-2"><%= humanized_money_with_symbol produto.price %></p>
                             </div>
-                            
+                            <div>
+                                <div class="float-left">
+                                    <div class="badge color-label has-tooltip" data-html="true" style="background-color: <%= produto.label.name.blank? ? '' : produto.label.color_i18n %>; color: <%= (produto.label.color != "warning" && produto.label.color != "light") ? '#ffffff' : '#212529' %>", title="<%= produto.label.description %>"><%= produto.label.name %>
+                                    </div>
+                                </div>
+                                <div class="float-right" style="padding-top:1px;">
+                                   <iframe src="https://www.facebook.com/plugins/like.php?href=<%= request.url %>%23produto-<%= produto.id %>&width=113&layout=button_count&action=recommend&size=small&share=false&height=21&appId" width="113" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media">
+                                   </iframe>
+                                </div>
+                             </div>
                         </div>
                     </div>
-                    <div style="padding: 15px;"></div>
                   <% end %>
                 </div>
             </div>
@@ -107,18 +114,25 @@
                     <div class="card px-3 col-12 col-md-6">
                         <div class="card-wrapper media-container-row media-container-row">
                             <div class="card-box">
-                                <div class="top-line pb-1">
+                                <div class="top-line pb-2">
                                     <h4 class="card-title mbr-fonts-style display-5"><%= produto.name %></h4>
                                     <p class="mbr-text card-title cost mbr-fonts-style m-0 display-5">
                                         <%= humanized_money_with_symbol produto.price %></p>
                                 </div>
-                                <div class="bottom-line">
-                                    <p class="mbr-text mbr-fonts-style display-7">
+                                <div class="media-container-row">
+                                    <div class="mbr-figure" style="max-width: 40%; padding-right: 10px;">
+                                        <%= image_tag("lanchonetedotrom/dark-burguer.png", :alt => "") %>
+                                    </div>
+                                    <p class="align-center aside-content">
                                          <%= produto.description %>
                                     </p>
                                 </div>
-                                <div class="bottom-line">
+                                <div class="bottom-line" style="width: 100%;">
                                     <div class="badge color-label has-tooltip" data-html="true" style="background-color: <%= produto.label.name.blank? ? '' : produto.label.color_i18n %>; color: <%= (produto.label.color != "warning" && produto.label.color != "light") ? '#ffffff' : '#212529' %>", title="<%= produto.label.description %>"><%= produto.label.name %>
+                                    </div>
+                                    <div class="float-right" style="padding-top: 2px;">
+                                   <iframe src="https://www.facebook.com/plugins/like.php?href=<%= request.url %>%23produto-<%= produto.id %>&width=113&layout=button_count&action=recommend&size=small&share=false&height=21&appId" width="113" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media">
+                                   </iframe>
                                     </div>
                                 </div>
                             </div>
@@ -144,25 +158,26 @@
 
 
 
-<section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9" style="top:60px;">
+<section class="mbr-gallery mbr-slider-carousel cid-rxoawiBdi6" id="gallery3-9" ">
 
     <div>
-        <div><!-- Filter --><!-- Gallery --><div class="mbr-gallery-row"><div class="mbr-gallery-layout-default"><div><div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica"><div href="#lb-gallery3-9" data-slide-to="0" data-toggle="modal">
-<%= image_tag("lanchonetedotrom/66908510-795976880796610-5943748770704392192-n-1-960x720-800x600.jpg", :alt => "Lanchonete do Trom") %>
+        <div><!-- Filter --><!-- Gallery --><div class="mbr-gallery-row"><div class="mbr-gallery-layout-default"><div><div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica">
+            <div href="#lb-gallery3-9" data-slide-to="0" data-toggle="modal" >
+<%= image_tag("lanchonetedotrom/fundo-hamburguer6.jpg", :alt => "", size: "210") %>
 <span class="icon-focus"></span></div></div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica"><div href="#lb-gallery3-9" data-slide-to="1" data-toggle="modal">
-<%= image_tag("lanchonetedotrom/67505585-795976934129938-1261372718775795712-n-960x720-800x600.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer2.jpg", :alt => "", size: "210") %>
 <span class="icon-focus"></span></div></div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica"><div href="#lb-gallery3-9" data-slide-to="2" data-toggle="modal">
-<%= image_tag("lanchonetedotrom/67297401-799980250396273-6500490872885346304-n-960x720-800x600.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer3.jpg", :alt => "", size: "210") %>
 <span class="icon-focus"></span></div></div><div class="mbr-gallery-item mbr-gallery-item--p0" data-video-url="false" data-tags="Fantástica"><div href="#lb-gallery3-9" data-slide-to="3" data-toggle="modal">
-<%= image_tag("lanchonetedotrom/whatsapp-image-2019-07-25-at-19.18.00-713x537-713x537.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer4.jpg", :alt => "", size: "210") %>
 <span class="icon-focus"></span></div></div></div></div><div class="clearfix"></div></div></div><!-- Lightbox --><div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery3-9"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="carousel-inner"><div class="carousel-item">
-<%= image_tag("lanchonetedotrom/66908510-795976880796610-5943748770704392192-n-1-960x720.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer6.jpg", :alt => "") %>
 </div><div class="carousel-item">
-<%= image_tag("lanchonetedotrom/67505585-795976934129938-1261372718775795712-n-960x720.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer2.jpg", :alt => "") %>
 </div><div class="carousel-item active">
-<%= image_tag("lanchonetedotrom/67297401-799980250396273-6500490872885346304-n-960x720.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer3.jpg", :alt => "") %>
 </div><div class="carousel-item">
-<%= image_tag("lanchonetedotrom/whatsapp-image-2019-07-25-at-19.18.00-713x537.jpg", :alt => "Lanchonete do Trom") %>
+<%= image_tag("lanchonetedotrom/fundo-hamburguer4.jpg", :alt => "") %>
 </div></div><a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery3-9"><span class="mbri-left mbr-iconfont" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery3-9"><span class="mbri-right mbr-iconfont" aria-hidden="true"></span><span class="sr-only">Next</span></a><a class="close" href="#" role="button" data-dismiss="modal"><span class="sr-only">Close</span></a></div></div></div></div></div>
     </div>
 
@@ -172,7 +187,6 @@
     <div class="container">
         <div class="media-container-row">
             <div class="col-md-8 align-center">
-                
                 <div class="social-list pl-0 mb-0">
                     <%= link_to "" + "#{ root_path }" + "", target: "_blank" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
@@ -183,8 +197,34 @@
                     <%= link_to "https://www.facebook.com/sharer/sharer.php?u=" + "#{ request.url }" + "&src=sdkpreparse", target: "_blank", class: "fb-xfbml-parse-ignore" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-sharethis socicon"></span>
                     <% end %>
+
+                   <!-- Botão para acionar modal -->
+                    <a data-toggle="modal" data-target="#modalExemplo">
+                      <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-stackexchange socicon"></span>
+                    </a>
+
                 </div>
             </div>
+
+           <!-- Modal -->
+            <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Comentários</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" style="max-height: auto; overflow: auto;">
+                    <div class="fb-comments" data-href="<%= request.url %>"  data-width="10px" data-numposts="5"></div>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+
         </div>
     </div>
 </section>

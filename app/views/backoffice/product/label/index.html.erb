@@ -23,7 +23,10 @@
               	<% @labels.each do |label| %>
 	                <tr>
 	                  <th scope="row"><%= label.id %></th>
-	                  <td><%= label.name %></td>
+                    <td>
+                     <div class="badge color-label has-tooltip" data-html="true" style="background-color: <%= label.name.blank? ? '' : label.color_i18n %>; color: <%= (label.color != "warning" && label.color != "light") ? '#ffffff' : '#212529' %>"  , title="<%= label.description %>"><%= label.name %>
+                      </div>
+                    </td>
 	                  <td><%= label.description %></td>
 	                  <td><%= label.site.name %></td>
 	                  <td style="width: 130px; text-align: center;">
