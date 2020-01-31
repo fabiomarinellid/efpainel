@@ -11,14 +11,14 @@
 // about supported directives.
 //
 //= require bootbox
-//= require backoffice/jquery.min
-//= require backoffice/popper.min
-//= require backoffice/bootstrap.min
-//= require backoffice/jquery.cookie
-//= require backoffice/Chart.min
-//= require backoffice/jquery.validate.min
-//= require backoffice/charts-home
-//= require backoffice/front
+//= require jquery.min
+//= require popper.min
+//= require bootstrap.min
+//= require jquery.cookie
+//= require Chart.min
+//= require jquery.validate.min
+//= require charts-home
+//= require front
 
 /* Sobrescreve  data-confirm do Rails */
 $.rails.allowAction = function(element) {
