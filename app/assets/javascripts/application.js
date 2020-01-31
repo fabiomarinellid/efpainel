@@ -10,6 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require rails-ujs
+//= require activestorage
+//= require_tree .
 //= require bootbox
 //= require backoffice/jquery.min
 //= require backoffice/popper.min
@@ -17,6 +21,7 @@
 //= require backoffice/jquery.cookie
 //= require backoffice/Chart.min
 //= require backoffice/jquery.validate.min
+//= require backoffice/charts-home
 //= require backoffice/front
 
 /* Sobrescreve  data-confirm do Rails */
