@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootbox
+//
 //= require backoffice/jquery.min
 //= require backoffice/popper.min
 //= require backoffice/bootstrap.min
@@ -19,6 +19,7 @@
 //= require backoffice/jquery.validate.min
 //= require backoffice/charts-home
 //= require backoffice/front
+//= require bootbox
 
 /* Sobrescreve  data-confirm do Rails */
 $.rails.allowAction = function(element) {
