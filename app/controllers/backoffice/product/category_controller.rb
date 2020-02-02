@@ -7,7 +7,18 @@ class Backoffice::Product::CategoryController < ApplicationController
   before_action :authenticate_user!
 
   def index
- 	@categories = Category.all
+
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @categories = Category.all.where(site_id: current_user.site_id)
+        return
+      else
+        @categories = Category.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
   end
 
   def new

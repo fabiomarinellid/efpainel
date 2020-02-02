@@ -31,11 +31,14 @@
 	            <%= t.label "Não mostrar Observação no cardápio" %>
 	         </div>
         </div>
-        <div class="form-group">
-            <%= t.label "Site", class: "form-control-label" %>   
-            <%= t.collection_select( :site_id, @sites, :id, :name, 
-            {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+        <div class="form-group" style="display: none">
+            <%= t.text_field :site_id,  :value => current_user.site_id %>
         </div>
+         <!-- <div class="form-group">
+              <%= t.label "Site", class: "form-control-label" %>   
+              <%= t.collection_select( :site_id, @sites, :id, :name, 
+              {:include_blank=>false}, {:class=> 'form-control mb-3 mb-3'}) %>
+            </div> -->
 	      <div class="form-group">       
 	        <%= t.submit "Salvar", class: "btn btn-primary" %>
 	      </div>

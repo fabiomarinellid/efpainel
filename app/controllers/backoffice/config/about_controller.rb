@@ -6,9 +6,19 @@ class Backoffice::Config::AboutController < ApplicationController
 
   before_action :authenticate_user!
   def index
-  	@abouts = About.all
 
-    @abouts_site_logado = About.all.where(site_id: current_user.site_id)
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @abouts =  About.all.where(site_id: current_user.site_id)
+        return
+      else
+        @abouts =  About.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
+
   end
 
   def new

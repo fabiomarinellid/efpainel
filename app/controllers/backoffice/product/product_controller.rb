@@ -6,7 +6,18 @@ class Backoffice::Product::ProductController < ApplicationController
 
   before_action :authenticate_user!
   def index
-  	@produtos = Item.all
+
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @produtos = Item.all.where(site_id: current_user.site_id)
+        return
+      else
+        @produtos = Item.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
   end
 
   def new
@@ -51,8 +62,8 @@ class Backoffice::Product::ProductController < ApplicationController
  private
 
     def carregaDropdowns
-      @categories = Category.all   
-      @labels = Label.all
+      @categories = Category.all.where(site_id: current_user.site_id)   
+      @labels = Label.all.where(site_id: current_user.site_id)
       @sites = Site.all   
     end
 

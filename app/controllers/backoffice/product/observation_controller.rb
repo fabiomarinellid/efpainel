@@ -6,7 +6,18 @@ class Backoffice::Product::ObservationController < ApplicationController
 
   before_action :authenticate_user!
   def index
-  	@observations = Observation.all
+
+     Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @observations = Observation.all.where(site_id: current_user.site_id)
+        return
+      else
+        @observations = Observation.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
   end
   
   def new

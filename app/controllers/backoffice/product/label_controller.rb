@@ -6,7 +6,18 @@ class Backoffice::Product::LabelController < ApplicationController
 
   before_action :authenticate_user!
   def index
-  	@labels = Label.all
+
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @labels = Label.all.where(site_id: current_user.site_id)
+        return
+      else
+        @labels = Label.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
   end
   
   def new

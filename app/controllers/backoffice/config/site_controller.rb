@@ -6,9 +6,10 @@ class Backoffice::Config::SiteController < ApplicationController
    before_action :authenticate_user!
 
   def index
-  	#@sites = Site.all.where(id: current_user.site_id)
 
+  	#@sites = Site.all.where(id: current_user.site_id)
   	@sites = Site.all
+    
   end
 
   def new

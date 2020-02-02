@@ -50,11 +50,23 @@ class Backoffice::Config::UserController < ApplicationController
 
       total_rows = 10
 
-      if current_user.role == 'full_access'
-        @admins = User.admins_for_all_sites(total_rows, current_user.id)
-      else
-        @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
+      Site.all.each do |site|
+
+        if (request.subdomain == site.url) && (site.id == current_user.site_id)
+          @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
+          return
+        else
+          @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
+          return
+        end
+
       end
+
+      #if current_user.role == 'full_access'
+      #  @admins = User.admins_for_all_sites(total_rows, current_user.id)
+      #else
+      #  @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
+      #end
 
     end
 

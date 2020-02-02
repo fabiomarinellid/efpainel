@@ -6,9 +6,19 @@ class Backoffice::Config::TitleController < ApplicationController
 
    before_action :authenticate_user!
   def index
-  	@titulos = Title.all
 
-    @titulos_site_logado = Title.all.where(site_id: current_user.site_id)
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @titulos = Title.all.where(site_id: current_user.site_id)
+        return
+      else
+        @titulos = Title.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
+  	
   end
 
   def new

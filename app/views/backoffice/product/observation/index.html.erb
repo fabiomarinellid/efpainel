@@ -15,7 +15,7 @@
                   <th>#</th>
                   <th>Descrição</th>
                   <th>Mostrar</th>
-                  <th>Site</th>
+                  <!--<th>Site</th>-->
                   <th style="text-align: center;">Ações</th>
                 </tr>
               </thead>
@@ -25,7 +25,7 @@
 	                  <th scope="row"><%= observation.id %></th>
 	                  <td><%= observation.description %></td>
 	                  <td><%= observation.active_i18n %></td>
-	                  <td><%= observation.site.name %></td>
+	                  <!--<td><%= observation.site.name %></td>-->
 	                  <td style="width: 130px; text-align: center;">
 	                  	<%= link_to edit_backoffice_product_observation_path(observation), class: "btn btn-primary" do %>
 	                        <i class="icon-new-file"></i>

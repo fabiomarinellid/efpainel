@@ -6,9 +6,18 @@ class Backoffice::Contact::PhoneController < ApplicationController
 
  before_action :authenticate_user!
   def index
-  	@phones = Phone.all
 
-    @phones_site_logado = Phone.all.where(site_id: current_user.site_id)
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @phones = Phone.all.where(site_id: current_user.site_id)
+        return
+      else
+        @phones = Phone.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
   end
 
   def new

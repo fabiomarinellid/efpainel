@@ -5,10 +5,21 @@ class Backoffice::Contact::AddressController < ApplicationController
  layout "backoffice"
 
  before_action :authenticate_user!
-  def index
-  	@addresses = Address.all
 
-    @address_site_logado = Address.all.where(site_id: current_user.site_id)
+  def index
+
+    Site.all.each do |site|
+
+      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+        @addresses = Address.all.where(site_id: current_user.site_id)
+        return
+      else
+        @addresses = Address.all.where(site_id: current_user.site_id)
+        return
+      end
+
+    end
+ 
   end
 
  def new
