@@ -1,6 +1,6 @@
 class Backoffice::Config::UserController < ApplicationController
  before_action :set_admin, only: [:edit, :update, :destroy]
- before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
+ before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "Backoffice"
   before_action :authenticate_user!
@@ -49,29 +49,14 @@ class Backoffice::Config::UserController < ApplicationController
     def carregaAdmins
 
       total_rows = 10
-
-      Site.all.each do |site|
-
-        if (request.subdomain == site.url) && (site.id == current_user.site_id)
-          @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
-          return
-        else
-          @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
-          return
-        end
-
-      end
-
-      #if current_user.role == 'full_access'
-      #  @admins = User.admins_for_all_sites(total_rows, current_user.id)
-      #else
-      #  @admins = User.admins_for_any_sites(total_rows, current_user.site_id, current_user.id)
-      #end
+      
+      @admins = User.admins_for_any_sites(total_rows, current_user.id)
 
     end
 
     def carregaDropdowns
       @sites = Site.all   
+      @profiles = Profile.profile(current_user.id)
     end
 
     def set_admin

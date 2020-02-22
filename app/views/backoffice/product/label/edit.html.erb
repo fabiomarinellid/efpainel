@@ -54,6 +54,9 @@
                 <%= t.radio_button :color, :light %>
                 Cinza
               <% end %>
+              <%= t.label "Cores", class: "btn btn-sm", style: "background-color: #0033CC", title: "Azul UA" do %>
+  <%= t.radio_button :color, "#0033CC" %>
+<% end %>
             </div>
           </div>
   	      <div class="form-group" style="display: none">

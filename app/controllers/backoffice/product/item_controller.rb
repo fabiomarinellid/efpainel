@@ -26,6 +26,6 @@ class Backoffice::Product::ItemController < ApplicationController
     end
 
     def params_produto
-        params.require(:item).permit(:name, :description, :price,  :active, :bestseller, :category_id, :label_id, :site_id)
+        params.require(:item).permit(:name, :description, :price,  :active, :bestseller, :category_id, :label_id, :site_id, :photoitem)
     end
 end

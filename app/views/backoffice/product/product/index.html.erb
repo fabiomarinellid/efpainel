@@ -38,6 +38,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>Foto do produto</th>
                   <th>Nome</th>
                   <th>Descrição</th>
                   <th>Preço</th>
@@ -53,6 +54,7 @@
               	<% @produtos.each do |produto| %>
 	                <tr>
 	                  <th scope="row"><%= produto.id %></th>
+                    <td><img src="<%= produto.photoitem %>" style="height: 3.8rem;" /></td>
 	                  <td><%= produto.name %></td>
 	                  <td><%= produto.description %></td>
                     <td><%= humanized_money_with_symbol produto.price %></td>

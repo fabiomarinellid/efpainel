@@ -1,6 +1,6 @@
   <section class="menu cid-rxkNlVvFsy" once="menu" id="menu1-0">
 <% @titulos.each do |titulo| %>
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="hamburger">
                 <span></span>
@@ -72,7 +72,11 @@
                   <% @bestproducts.each do |produto| %>
                     <div class="media-container-row">
                         <div class="mbr-figure" style="width: 50%;">
-                        	<%= image_tag("lanchonetedotrom/combo.jpg", :alt => "") %>
+                          <% if produto.photoitem.blank? %>
+                            <%= image_tag("lanchonetedotrom/combo.jpg", :alt => "") %>
+                          <% else %>
+                        	  <img src="<%= produto.photoitem %>" alt="" />
+                          <% end %>
                         </div>
                         <div class="align-left aside-content">
                             <h2 class="mbr-title pt-2 mbr-fonts-style display-2"><%= produto.name %></h2>
@@ -99,15 +103,16 @@
         </section>
 <% end %>
 
-<section class="services3 cid-rxkQgxY2Bs" id="services3-6">
+<section class="services3 cid-rxkQgxY2Bs" id="services3-6" style="padding-bottom: 90px;">
     <div class="container">
         <div class="row">
             <div class="title pb-5 col-12">
                 <h2 class="align-center mbr-fonts-style display-1">Cardápio</h2>
             </div>
             <% @categories.each do |categoria| %>
-              <div class="title pb-5 col-12">
-                <h5><%= categoria.category.description %></h5>
+              <div class="title pb-5 col-12" style="width: 20%;">
+                <h5 style="float: left;"><%= categoria.category.description %></h5>
+                <hr class="line" style="width: 80%; float: right;">
               </div> 
                 <% @products.each do |produto| %>
                   <% if produto.category_id == categoria.category_id %>
@@ -121,7 +126,11 @@
                                 </div>
                                 <div class="media-container-row">
                                     <div class="mbr-figure" style="max-width: 40%; padding-right: 10px;">
+                                      <% if produto.photoitem.blank? %>
                                         <%= image_tag("lanchonetedotrom/dark-burguer.png", :alt => "") %>
+                                      <% else %>
+                                        <img src="<%= produto.photoitem %>" alt="" />
+                                      <% end %>
                                     </div>
                                     <p class="align-center aside-content">
                                          <%= produto.description %>
@@ -149,6 +158,17 @@
             <hr class="line" style="width: 50%;">
             <div class="section-text align-center mbr-fonts-style display-5">
                <%= observation.description %>
+            </div></div>
+            <hr class="line" style="width: 50%;">
+        </div>
+    </div>
+<% end %>
+<% if (@products.count <= 0 && @observations.count <= 0) %>
+    <div class="container">
+        <div class="inner-container" style="width: 100%;">
+            <hr class="line" style="width: 50%;">
+            <div class="section-text align-center mbr-fonts-style display-5">
+               Seu cardápio esta vazio, cadastre alguns produtos ou adicione alguma observação para seus clientes
             </div></div>
             <hr class="line" style="width: 50%;">
         </div>
@@ -187,6 +207,9 @@
     <div class="container">
         <div class="media-container-row">
             <div class="col-md-8 align-center">
+                <h2 class="pb-3 mbr-fonts-style display-2">
+                    NOS SIGA, COMPARTILHE E COMENTE!
+                </h2>
                 <div class="social-list pl-0 mb-0">
                     <%= link_to "" + "#{ root_path }" + "", target: "_blank" do %>
                         <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>

@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script>
+      function funcao1()
+      {
+      alert("<%= request.fullpath %>");
+      }
+    </script>
   </head>
 
   <body>
@@ -31,10 +38,11 @@
           <div class="right-menu list-inline no-margin-bottom">
             <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email"></i><span class="badge dashbg-1">1</span><span style="margin-left: 2px;">Mensagens</span></a>
               <div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu messages"><a href="#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="img/avatar-3.jpg" alt="..." class="img-fluid">
+                  <div class="profile">
+                    <%= image_tag("backoffice/pp (1).jpg", :alt => "", size: "210", class: "img-fluid") %>
                     <div class="status online"></div>
                   </div>
-                  <div class="content">   <strong class="d-block">Pamela Caroline</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:30</small></div>
+                  <div class="content">   <strong class="d-block">Lorenzo Dionizio</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:30</small></div>
 
                   <a href="#" class="dropdown-item text-center message"> <strong>Mostrar todas mensages <i class="fa fa-angle-right"></i></strong></a>
                   </div>
@@ -49,6 +57,7 @@
                    <span>Meu perfil</span>
                 <% end %>
                 <a rel="nofollow" href="#" class="dropdown-item"><span>Informações do site</span>
+                  <input type="button" onclick="funcao1()" value="Exibir Alert" />
                 </a>
               </div>
             </div>
@@ -64,7 +73,7 @@
       </nav>
     </header>
 
-<div class="d-flex align-items-stretch">
+    <div class="d-flex align-items-stretch">
       <!-- Sidebar Navigation-->
       <nav id="sidebar">
         <!-- Sidebar Header-->
@@ -77,96 +86,51 @@
             </div>
             <div class="title">
               <h1 class="h5"><%= admin.name %></h1>
-              <p><%= admin.site.name %></p>
+              <p><%= admin.sites.name %></p>
             </div>
           <% end %>
         </div>
-        <!-- Sidebar Navidation Menus-->
-        <span class="heading">Principal</span>
-        <ul class="list-unstyled">
-          <li class="<%= controller.controller_name == "dashboard" ? 'active' : '' %>">
-           <%= link_to backoffice_dashboard_index_path do %>
-            <i class="fas fa-chart-line"></i>Dashboard
-           <% end %>
-          </li>
-          <li class="<%= controller.controller_name == "site" ? 'active' : '' %>">
-            <%= link_to backoffice_config_site_index_path do %> 
-             <i class="icon-website"></i>Sites
+
+       <% @profiles.each do |pai| %>
+        <% if pai.level == 1 %>
+          <span class="heading"><%= pai.description %></span>
+        <% end %>
+          <% @profiles.each do |filho| %>
+            <% if pai.code == filho.father %>
+              <ul class="list-unstyled">
+                  <li class="<%= controller.controller_name == filho.controller_name ? 'active' : '' %>">
+                    <% if filho.level == 2 %>
+                      <% if filho.route == 'root_path' %>
+                        <%= link_to eval(filho.route), target: "_blank" do %>
+                        <i class="<%= filho.icon %>"></i><%= filho.description %>
+                        <% end %>
+                      <% else %>
+                         <%= link_to eval(filho.route) do %>
+                        <i class="<%= filho.icon %>"></i><%= filho.description %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <% if filho.level == 3 %>
+                      <a href="#menu-<%= filho.code %>" aria-expanded="false" data-toggle="collapse"> <i class="<%= filho.icon %>"></i>
+                      <%= filho.description %></a>
+                    <% end %>
+                    <% @profiles.each do |neto| %>
+                        <% if filho.code == neto.father %>
+                          <ul id="menu-<%= neto.father %>" class="collapse list-unstyled ">
+                            <li class="<%= controller.controller_name == neto.controller_name ? 'active' : '' %>">  
+                              <%= link_to eval(neto.route) do %>
+                              <i class="<%= neto.icon %>"></i><%= neto.description %>
+                              <% end %>
+                            </li>
+                          </ul>   
+                        <% end %>
+                    <% end %>
+                  </li>
+              </ul>
             <% end %>
-          </li>
-          <li class="<%= controller.controller_name == "user" ? 'active' : '' %>">
-             <%= link_to backoffice_config_user_index_path do %> 
-             <i class="icon-user-1"></i>Admins
-            <% end %>
-          </li>
-        </ul>
-        <span class="heading">Cadastros</span>
-        <ul class="list-unstyled">
+          <% end %>
+        <% end %>
         
-        <li>
-          <a href="#config" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-info"></i>Info</a>
-            <ul id="config" class="collapse list-unstyled ">
-              <li class="<%= controller.controller_name == "title" ? 'active' : '' %>">
-                <%= link_to backoffice_config_title_index_path do %> 
-                 <i class="fas fa-heading"></i>Titulos
-                <% end %>
-              </li>
-              <li class="<%= controller.controller_name == "about" ? 'active' : '' %>">
-                 <%= link_to backoffice_config_about_index_path do %> 
-                 <i class="fas fa-address-card"></i>Sobre
-                <% end %>
-              </li>
-            </ul>
-        </li>
-        <li>
-          <a href="#product" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-list"></i>Cardapio</a>
-            <ul id="product" class="collapse list-unstyled ">
-               <li class="<%= controller.controller_name == "category" ? 'active' : '' %>">
-                 <%= link_to backoffice_product_category_index_path do %> 
-                 <i class="icon-list"></i>Categoria
-                <% end %>
-              </li>
-              <li class="<%= controller.controller_name == "label" ? 'active' : '' %>">
-                 <%= link_to backoffice_product_label_index_path do %> 
-                 <i class="fas fa-tags"></i>Rótulos
-                <% end %>
-              </li>
-              <li class="<%= controller.controller_name == "product" ? 'active' : '' %>">
-                 <%= link_to backoffice_product_product_index_path do %> 
-                 <i class="fas fa-hamburger"></i>Produtos
-                <% end %>
-              </li>
-               <li class="<%= controller.controller_name == "observation" ? 'active' : '' %>">
-                 <%= link_to backoffice_product_observation_index_path do %> 
-                 <i class="fas fa-exclamation"></i>Obs
-                <% end %>
-              </li>
-            </ul>
-        </li>
-        <li>
-          <a href="#contact" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-address-book"></i>Contatos</a>
-            <ul id="contact" class="collapse list-unstyled ">
-                <li class="<%= controller.controller_name == "phone" ? 'active' : '' %>">
-                 <%= link_to backoffice_contact_phone_index_path do %> 
-                 <i class="fas fa-mobile-alt"></i>Telefones
-                <% end %>
-              </li>
-              <li class="<%= controller.controller_name == "address" ? 'active' : '' %>">
-                 <%= link_to backoffice_contact_address_index_path do %> 
-                 <i class="fas fa-map-marked"></i>Endereços
-                <% end %>
-              </li>
-            </ul>
-        </li>
-      </ul>
-        <span class="heading">Links</span>
-        <ul class="list-unstyled">
-          <li>
-           <%= link_to  root_path, target: "_blank"  do %> 
-                <i class="fas fa-link"></i>Link do site
-            <% end %>
-          </li>
-        </ul>
       </nav>
     <!-- Sidebar Navigation end-->
     <div class="page-content">

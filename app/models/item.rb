@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   enum active: {:disable => 0, :enable => 1}
   enum bestseller: {:not_highlight => 0, :highlight => 1}
 
+  mount_uploader :photoitem, PhotoitemUploader
+
   # gem money-rails
   monetize :price_cents
 

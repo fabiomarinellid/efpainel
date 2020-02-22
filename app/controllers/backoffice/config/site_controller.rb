@@ -55,6 +55,7 @@ class Backoffice::Config::SiteController < ApplicationController
 
     def carregaDropdowns
       @admins = User.all   
+      @profiles = Profile.profile(current_user.id)
     end
 
     def set_site
@@ -62,7 +63,7 @@ class Backoffice::Config::SiteController < ApplicationController
     end
 
     def params_site
-      params.require(:site).permit(:name, :description, :url)
+      params.require(:site).permit(:name, :description, :url, :user_ids)
     end
 
 end

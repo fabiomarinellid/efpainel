@@ -31,7 +31,7 @@
                   <th>Nome</th>
                   <th>Email</th>
                   <th>Perfil de acesso</th>
-                  <!--<th>Site</th>-->
+                  <th>Site</th>
                   <th style="text-align: center;">Ações</th>
                 </tr>
               </thead>
@@ -44,7 +44,7 @@
 	                  <td><%= admin.name %></td>
                     <td><%= admin.email %></td>
                     <td><%= admin.role_i18n %></td>
-	                  <!--<td><%= admin.site.name %></td>-->
+	                  <td><%= admin.sites.name %></td>
 	                  <td style="width: 130px; text-align: center;">
                       <%= link_to edit_backoffice_config_user_path(admin), class: "btn btn-primary" do %>
                           <i class="icon-new-file"></i>

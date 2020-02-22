@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: 1
+  description: MyString
+  father: 1
+  route: MyString
+  read: 1
+  create: 1
+  edit: 1
+  erase: 1
+  active: 1
+  order: 1
+  icon: MyString
+  user: one
+  site: one
+
+two:
+  code: 1
+  description: MyString
+  father: 1
+  route: MyString
+  read: 1
+  create: 1
+  edit: 1
+  erase: 1
+  active: 1
+  order: 1
+  icon: MyString
+  user: two
+  site: two

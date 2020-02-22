@@ -1,0 +1,15 @@
+'pt-BR':
+  models:
+    site:
+      name: Nome
+      description: Descrição
+      url: Subdominio
+      created_at: Criado em 
+      updated_at: Atualizado em
+    title: 
+      title: Titulo
+      subtitle: Subtitulo
+      text: Texto
+      bestsellername: Destaque
+      site: Site
+    
