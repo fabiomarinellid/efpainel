@@ -10,10 +10,12 @@ class Backoffice::Config::TitleController < ApplicationController
     Site.all.each do |site|
 
       if (request.subdomain == site.url) && (site.id == current_user.site_id)
-        @titulos = Title.all.where(site_id: current_user.site_id)
+        #@titulos = Title.all.where(site_id: current_user.site_id)
+        @titulos = Title.all.joins(:sites).where(:user_id == current_user.id)
         return
       else
-        @titulos = Title.all.where(site_id: current_user.site_id)
+        #@titulos = Title.all.where(site_id: current_user.site_id)
+        @titulos = Title.all.joins(:sites).where(:user_id == current_user.id)
         return
       end
 
