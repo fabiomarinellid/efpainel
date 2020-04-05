@@ -1,0 +1,61 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Cadastro dos módulos de acesso</h2>
+    <h3><%= notice %></h3>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block margin-bottom-sm">
+          <div class="table-responsive"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descrição do Módulo</th>
+                  <th>Visualizar</th>
+                  <th>Cadastrar</th>
+                  <th>Alterar</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% @profiles_admin_new.each do |profile| %>
+	                <tr>
+	                  <th scope="row"><%= profile.code %></th>
+	                  <td><%= profile.description %></td>
+                    <td>
+                      <label class="el-switch">
+                        <input type="checkbox" name="switch" #{profile.read == 1 ? checked : } >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                      <label class="el-switch">
+                        <input type="checkbox" name="switch" #{profile.create == 1 ? checked : } >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                       <label class="el-switch">
+                        <input type="checkbox" name="switch" #{profile.edit == 1 ? checked : } >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                      <label class="el-switch">
+                        <input type="checkbox" name="switch" #{profile.erase == 1 ? checked : } >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+	                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 class Backoffice::Config::AboutController < ApplicationController
   before_action :set_about, only: [:edit, :update, :destroy]
-  before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
+  before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
@@ -10,10 +10,10 @@ class Backoffice::Config::AboutController < ApplicationController
     Site.all.each do |site|
 
       if (request.subdomain == site.url) && (site.id == current_user.site_id)
-        @abouts =  About.all.where(site_id: current_user.site_id)
+        @abouts =  About.all.where(site_id: current_user.site)
         return
       else
-        @abouts =  About.all.where(site_id: current_user.site_id)
+        @abouts =  About.all.where(site_id: current_user.site)
         return
       end
 
@@ -52,6 +52,7 @@ class Backoffice::Config::AboutController < ApplicationController
 
     def carregaDropdowns
       @sites = Site.all   
+      @profiles = Profile.profile(current_user)
     end
 
     def set_about

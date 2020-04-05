@@ -1,6 +1,6 @@
 class Backoffice::Config::TitleController < ApplicationController
    before_action :set_title, only: [:edit, :update]
-   before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
+   before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
    layout "backoffice"
 
@@ -9,13 +9,11 @@ class Backoffice::Config::TitleController < ApplicationController
 
     Site.all.each do |site|
 
-      if (request.subdomain == site.url) && (site.id == current_user.site_id)
-        #@titulos = Title.all.where(site_id: current_user.site_id)
-        @titulos = Title.all.joins(:sites).where(:user_id == current_user.id)
+      if (request.subdomain == site.url) && (site.id == current_user.site)
+        @titulos = Title.all.where(site_id: 1)
         return
       else
-        #@titulos = Title.all.where(site_id: current_user.site_id)
-        @titulos = Title.all.joins(:sites).where(:user_id == current_user.id)
+        @titulos = Title.all.where(site_id: 1)
         return
       end
 
@@ -54,6 +52,7 @@ class Backoffice::Config::TitleController < ApplicationController
 
     def carregaDropdowns
       @sites = Site.all   
+      @profiles = Profile.profile(current_user)
     end
 
     def set_title

@@ -1,0 +1,75 @@
+<div class="page-header">
+  <div class="container-fluid">
+    <h2 class="h5 no-margin-bottom">Cadastro dos módulos de acesso</h2>
+    <h3><%= notice %></h3>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="block margin-bottom-sm">
+          <div class="table-responsive"> 
+          <%= form_tag edit_backoffice_config_user_path, method: :get do %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Descrição do Módulo</th>
+                  <th>Visualizar</th>
+                  <th>Cadastrar</th>
+                  <th>Alterar</th>
+                  <th>Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% @profiles_admin_set.each do |profile| %>
+	                <tr>
+	                  <th scope="row"><i class="<%= profile.icon %>"></i></th>
+	                  <td><%= profile.description %></td>
+                    <td>
+                      <label class="el-switch">
+                      <input type="checkbox" name="<%= profile.code %>-0" <%=  profile.read == 1 ? "checked" : "" %> >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                      <label class="el-switch">
+                        <input type="checkbox" name="<%= profile.code %>-1" 
+                        <%=  profile.route == nil ? "disabled" : "#{profile.create == 1 ? "checked" : ""}" &&
+                             profile.code == 2 ? "disabled" : "#{profile.create == 1 ? "checked" : ""}" &&
+                             profile.code == 18 ? "disabled" : "#{profile.create == 1 ? "checked" : ""}" %> >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                       <label class="el-switch">
+                        <input type="checkbox" name="<%= profile.code %>-2"
+                        <%=  profile.route == nil ? "disabled" : "#{profile.edit == 1 ? "checked" : ""}" &&
+                             profile.code == 2 ? "disabled" : "#{profile.edit == 1 ? "checked" : ""}" &&
+                             profile.code == 18 ? "disabled" : "#{profile.edit == 1 ? "checked" : ""}" %> >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+                    <td>
+                      <label class="el-switch">
+                        <input type="checkbox" name="<%= profile.code %>-3" 
+                        <%=  profile.route == nil ? "disabled" : "#{profile.erase == 1 ? "checked" : ""}" &&
+                             profile.code == 2 ? "disabled" : "#{profile.erase == 1 ? "checked" : ""}" &&
+                             profile.code == 18 ? "disabled" : "#{profile.erase == 1 ? "checked" : ""}" %> >
+                        <span class="el-switch-style"></span>
+                      </label>
+                    </td>
+	                </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="form-group">
+              <%= submit_tag "Salvar", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

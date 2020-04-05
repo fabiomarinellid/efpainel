@@ -1,6 +1,6 @@
 class Backoffice::Contact::PhoneController < ApplicationController
  before_action :set_phone, only: [:edit, :update, :destroy]
- before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
+ before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
  layout "backoffice"
 
@@ -9,11 +9,11 @@ class Backoffice::Contact::PhoneController < ApplicationController
 
     Site.all.each do |site|
 
-      if (request.subdomain == site.url) && (site.id == current_user.site_id)
-        @phones = Phone.all.where(site_id: current_user.site_id)
+      if (request.subdomain == site.url) && (site.id == current_user.site)
+        @phones = Phone.all.where(site_id: current_user.site)
         return
       else
-        @phones = Phone.all.where(site_id: current_user.site_id)
+        @phones = Phone.all.where(site_id: current_user.site)
         return
       end
 
@@ -62,7 +62,8 @@ class Backoffice::Contact::PhoneController < ApplicationController
  private
 
     def carregaDropdowns
-      @sites = Site.all   
+      @sites = Site.all  
+      @profiles = Profile.profile(current_user) 
     end
 
     def set_phone

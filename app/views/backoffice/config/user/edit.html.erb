@@ -1,6 +1,7 @@
 <div class="page-header">
   <div class="container-fluid">
     <h2 class="h5 no-margin-bottom">Alterar perfil do Administrador</h2>
+	<h3><%= notice %></h3>
   </div>
 </div>
 
@@ -50,6 +51,7 @@
 			  </div>
 			 <% end %>
 			</div>
+			<%= t.hidden_field :site, :value => current_user.site %>
 	        <div class="form-group">       
 	         <%= t.submit "Salvar", class: "btn btn-primary" %>
 	        </div>
@@ -57,3 +59,5 @@
 	  </div>
 	</div>
 </div>
+
+<%= render partial: "backoffice/config/user/profile_edit" %>

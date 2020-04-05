@@ -4,7 +4,6 @@ class CreateSites < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
       t.string :url
-      t.references :user, foreign_key: true
 
       t.timestamps
     end

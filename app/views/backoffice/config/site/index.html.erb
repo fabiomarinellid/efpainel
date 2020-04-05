@@ -41,7 +41,13 @@
 	                  <td><%= site.name %></td>
 	                  <td><%= site.description %></td>
 	                  <td><%= site.url %></td>
-                    <td><%= site.user.name %></td>
+                    <td>
+                      <% @names_users.each do |user| %>
+                        <% if user.id == site.id %>
+                        <%= user.name %>,
+                        <% end %>
+                      <% end %>
+                    </td>
 	                  <td style="width: 130px; text-align: center;"> 
 	                  	<div style="float:left; margin: 1px;">
 	                  	<%= link_to edit_backoffice_config_site_path(site), class: "btn btn-primary" do %>

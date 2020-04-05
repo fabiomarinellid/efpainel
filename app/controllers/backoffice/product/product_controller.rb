@@ -1,6 +1,6 @@
 class Backoffice::Product::ProductController < ApplicationController
   before_action :set_produto, only: [:edit, :update, :destroy]
-  before_action :carregaDropdowns, only: [:new , :create, :edit, :update]
+  before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
@@ -9,11 +9,11 @@ class Backoffice::Product::ProductController < ApplicationController
 
     Site.all.each do |site|
 
-      if (request.subdomain == site.url) && (site.id == current_user.site_id)
-        @produtos = Item.all.where(site_id: current_user.site_id)
+      if (request.subdomain == site.url) && (site.id == current_user.site)
+        @produtos = Item.all.where(site_id: current_user.site)
         return
       else
-        @produtos = Item.all.where(site_id: current_user.site_id)
+        @produtos = Item.all.where(site_id: current_user.site)
         return
       end
 
@@ -62,8 +62,9 @@ class Backoffice::Product::ProductController < ApplicationController
  private
 
     def carregaDropdowns
-      @categories = Category.all.where(site_id: current_user.site_id)   
-      @labels = Label.all.where(site_id: current_user.site_id)
+      @profiles = Profile.profile(current_user)
+      @categories = Category.all.where(site_id: current_user.site)   
+      @labels = Label.all.where(site_id: current_user.site)
       @sites = Site.all   
     end
 

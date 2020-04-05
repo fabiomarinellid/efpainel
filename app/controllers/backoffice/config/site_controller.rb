@@ -8,7 +8,9 @@ class Backoffice::Config::SiteController < ApplicationController
   def index
 
   	#@sites = Site.all.where(id: current_user.site_id)
-  	@sites = Site.all
+    @sites = Site.all
+    
+    @names_users = Site.names_users_from_site(current_user)
     
   end
 
@@ -55,7 +57,7 @@ class Backoffice::Config::SiteController < ApplicationController
 
     def carregaDropdowns
       @admins = User.all   
-      @profiles = Profile.profile(current_user.id)
+      @profiles = Profile.profile(current_user)
     end
 
     def set_site

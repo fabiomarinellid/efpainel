@@ -112,10 +112,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_182047) do
     t.string "name"
     t.string "description"
     t.string "url"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sites_on_user_id"
   end
 
   create_table "titles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -146,6 +144,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_182047) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "role"
+    t.integer "site"
     t.string "photoavatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -162,6 +161,5 @@ ActiveRecord::Schema.define(version: 2020_02_17_182047) do
   add_foreign_key "phones", "sites"
   add_foreign_key "profiles", "sites"
   add_foreign_key "profiles", "users"
-  add_foreign_key "sites", "users"
   add_foreign_key "titles", "sites"
 end

@@ -50,6 +50,7 @@
 			  </div>
 			 <% end %>
 			</div>
+			<%= t.hidden_field :site, :value => current_user.site %>
 	        <div class="form-group">       
 	         <%= t.submit "Salvar", class: "btn btn-primary" %>
 	        </div>

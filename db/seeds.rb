@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Cadastrando o Sites Padrão..."
 
+Site.create( name: "Site Padrão", description: "Site com layout padrão para lanchonete" )
+
+puts "Site cadastrados com sucesso!"
 
 puts "Cadastrando o ADMINISTRADOR Padrão..."
 
@@ -15,25 +19,11 @@ User.create(
   password: "123456",
   password_confirmation: "123456",
   name: "Admin",
-  role: 0
-)
-
-User.create(
-  email: "user@admin.com",
-  password: "123456",
-  password_confirmation: "123456",
-  name: "User",
-  role: 1
+  role: 0,
+  site: 1
 )
 
 puts "ADMINISTRADOR cadastrado com sucesso!"
-
-puts "Cadastrando o Sites Padrão..."
-
-Site.create( name: 'Site Padrão', description: 'Site com layout padrão para lanchonete', user_id: 1 )
-
-puts "Site cadastrados com sucesso!"
-
 
 puts "Cadastrando os TITULOS..."
 
