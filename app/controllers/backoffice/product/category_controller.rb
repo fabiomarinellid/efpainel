@@ -64,7 +64,7 @@ class Backoffice::Product::CategoryController < ApplicationController
 
     def carregaDropdowns
       @sites = Site.all   
-      @profiles = Profile.profile(current_user)
+      @profiles = Profile.profile_views(current_user, current_user.site)
     end
 
     def set_category

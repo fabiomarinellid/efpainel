@@ -1,82 +1,97 @@
 <div class="page-header">
-  <div class="container-fluid">
-    <h2 class="h5 no-margin-bottom">Configurações do site</h2>
-    <h3><%= notice %></h3>
-  </div>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="block margin-bottom-sm">
-        <div class="input-group">
-          <input type="text" class="form-control">
-          <div class="input-group-append">
-            <button type="button" class="btn btn-primary">Pesquisar</button>
-          </div>
-        </div>
-      </div>
-     </div>
+   <div class="container-fluid">
+      <h2 class="h5 no-margin-bottom">Configurações do site</h2>
+      <h3><%= notice %></h3>
    </div>
 </div>
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="block margin-bottom-sm">
-          <div class="table-responsive"> 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nome</th>
-                  <th>Descrição</th>
-                  <th>Url</th>
-                  <th>Usuários</th>
-                  <th style="text-align: center;">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-              	<% @sites.each do |site| %>
-	                <tr>
-	                  <th scope="row"><%= site.id %></th>
-	                  <td><%= site.name %></td>
-	                  <td><%= site.description %></td>
-	                  <td><%= site.url %></td>
-                    <td>
-                      <% @names_users.each do |user| %>
-                        <% if user.id == site.id %>
-                        <%= user.name %>,
-                        <% end %>
-                      <% end %>
-                    </td>
-	                  <td style="width: 130px; text-align: center;"> 
-	                  	<div style="float:left; margin: 1px;">
-	                  	<%= link_to edit_backoffice_config_site_path(site), class: "btn btn-primary" do %>
-	                        <i class="icon-new-file"></i>
-	                    <% end %>
-	                    </div>
-	                    <div style="float:left; margin: 1px;">
-	                    <%= link_to backoffice_config_site_path(site), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{site.name}</b>?"} do %>
-                        <i class="icon-close"></i>
-                      <% end %>
-	                    </div>
-	                  </td>
-	                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid">
    <div class="row">
-    <div class="col-lg-12">
-      <div class="block margin-bottom-sm">
-       <%= link_to new_backoffice_config_site_path, class: "btn btn-primary" do %>
-          <i class="fa fa-plus"></i>
-       <% end %>
+      <div class="col-lg-12">
+         <div class="block margin-bottom-sm">
+            <form>
+               <div class="input-group">
+                  <%= text_field_tag(:q, params[:q], { class:"form-control", placeholder: "Pesquisar por nome..." }) %>
+                  <div class="input-group-append">
+                     <%= button_tag(class:"btn btn-primary") do %><i class="fas fa-search"></i><% end %>
+                  </div>
+               </div>
+            </form>
+         </div>
       </div>
-     </div>
    </div>
-  </div>
+</div>
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="block margin-bottom-sm">
+            <div class="table-responsive">
+               <table class="table">
+                  <thead>
+                     <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Url</th>
+                        <th>Usuários</th>
+                        <% if(Profile.edit_permit(3, current_user.id, current_user.site) == 1 or
+                              Profile.erase_permit(3, current_user.id, current_user.site) == 1) %>
+                        <th style="text-align: center;">Ações</th>
+                        <% end %>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <% @sites.each do |site| %>
+                     <tr>
+                        <th scope="row"><%= site.id %></th>
+                        <td><%= site.name %></td>
+                        <td><%= site.description %></td>
+                        <td><%= site.url %></td>
+                        <td>
+                           <% @names_users.each do |user| %>
+                           <% if user.id == site.id %>
+                           <%= user.name %>,
+                           <% end %>
+                           <% end %>
+                        </td>
+                        <td class="text-center align-middle">
+                         <div style="padding:10px;">
+                           <% if(Profile.edit_permit(3, current_user.id, current_user.site) == 1) %>
+                           <%= link_to edit_backoffice_config_site_path(site), class: "btn btn-primary" do %>
+                           <i class="icon-new-file"></i>
+                           <% end %>
+                           <% end %>
+                           </div>
+                           <div>
+                           <% if(Profile.erase_permit(3, current_user.id, current_user.site) == 1) %>
+                           <%= link_to backoffice_config_site_path(site), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{site.name}</b>?"} do %>
+                           <i class="icon-close"></i>
+                           <% end %>
+                           <% end %>
+                         </div>
+                        </td>
+                     </tr>
+                     <% end %>
+                  </tbody>
+               </table>
+            </div>
+            <%= paginate @sites %>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="block margin-bottom-sm">
+            <% if(Profile.create_permit(3, current_user.id, current_user.site) == 1) %>
+              <%= link_to new_backoffice_config_site_path, class: "btn btn-primary" do %>
+              <i class="fa fa-plus"></i>
+              <% end %> 
+              <div style="float:right; margin-top:6px;"><%= @sitesCount.count %> Registro(s)</div>
+            <% else %>
+              <div style="text-align:right;"><%= @sitesCount.count %> Registro(s)</div>
+            <% end %>
+         </div>
+      </div>
+   </div>
+</div>

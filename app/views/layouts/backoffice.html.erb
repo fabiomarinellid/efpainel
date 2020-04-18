@@ -29,7 +29,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
           <div class="navbar-header">
-            <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+            <!-- Navbar Header--><a href="#" class="navbar-brand">
               <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">EF</strong><strong>Painel</strong></div>
               <div class="brand-text brand-sm"><strong class="text-primary">E</strong><strong>F</strong></div></a>
             <!-- Sidebar Toggle Btn-->
@@ -79,15 +79,17 @@
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
           <% User.where(id: current_user.id).each do |admin| %>
-            <div class="avatar">
-              <%= link_to "#top" do %>                  
-                  <img src="<%= admin.photoavatar %>" alt="..." class="img-fluid rounded-circle">
-              <% end %>
-            </div>
-            <div class="title">
-              <h1 class="h5"><%= admin.name %></h1>
-              <p><%= admin.sites.name %></p>
-            </div>
+            <% Site.where(id: admin.site).each do | site | %>
+              <div class="avatar">
+                <%= link_to "#top" do %>                  
+                    <img src="<%= admin.photoavatar %>" alt="..." class="img-fluid rounded-circle">
+                <% end %>
+              </div>
+              <div class="title">
+                <h1 class="h5"><%= admin.name.blank? ? admin.email : admin.name %></h1>
+                <p><%= site.name %></p>
+              </div>
+            <% end %>
           <% end %>
         </div>
 
@@ -100,7 +102,7 @@
               <ul class="list-unstyled">
                   <li class="<%= controller.controller_name == filho.controller_name ? 'active' : '' %>">
                     <% if filho.level == 2 %>
-                      <% if filho.route == 'root_path' %>
+                      <% if filho.father == 17 %><!-- Para links externos do módulo Links -->
                         <%= link_to eval(filho.route), target: "_blank" do %>
                         <i class="<%= filho.icon %>"></i><%= filho.description %>
                         <% end %>

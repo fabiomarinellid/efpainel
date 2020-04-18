@@ -36,6 +36,7 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'enum_help'
 gem 'money-rails'
+gem 'kaminari'
 
 source 'https://rails-assets.org' do
 # BootboxJS

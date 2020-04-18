@@ -1,17 +1,15 @@
 class Backoffice::Config::SiteController < ApplicationController
    before_action :set_site, only: [:edit, :update, :destroy]
    before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
+   before_action :validaracesso, only: [:index, :new , :create, :edit, :update]
 
    layout "backoffice"
    before_action :authenticate_user!
 
   def index
-
-  	#@sites = Site.all.where(id: current_user.site_id)
-    @sites = Site.all
-    
+    @sites = Site.where("name LIKE ?", "%#{params[:q]}%").page(params[:page]).per(5)
+    @sitesCount = Site.where("name LIKE ?", "%#{params[:q]}%")
     @names_users = Site.names_users_from_site(current_user)
-    
   end
 
   def new
@@ -19,10 +17,10 @@ class Backoffice::Config::SiteController < ApplicationController
   end
 
   def create
-    @site = SiteService.create(params_site)
+    @site = SiteService.create(params_site, current_user.id)
 
     unless @site.errors.any?
-      redirect_to backoffice_config_site_index_path, notice: "Novo site cadastrado com sucesso"
+      redirect_to edit_backoffice_config_user_path(current_user.id), notice: "Site cadastrado com sucesso, agora termine de cadastrar as informações do seu perfil"
     else
       render :new
     end
@@ -56,8 +54,16 @@ class Backoffice::Config::SiteController < ApplicationController
  private
 
     def carregaDropdowns
-      @admins = User.all   
-      @profiles = Profile.profile(current_user)
+      @admins = User.all 
+      @profiles = Profile.profile_views(current_user, current_user.site)
+    end
+
+    def validaracesso
+      unless(current_user.site.blank?)
+        if(Profile.read_permit(3, current_user.id, current_user.site) == 0)
+          redirect_to "/422.html"
+        end
+      end
     end
 
     def set_site

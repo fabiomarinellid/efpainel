@@ -16,6 +16,6 @@ class User < ApplicationRecord
   scope :admins_for_any_sites, -> (quantity, site, user_id) { limit(quantity).all.where(site: site).where.not(id: user_id).order(created_at: :desc) }
 
   # Pesquisa a quantidade de usuarios do site do usuario logado
-  scope :admins_count_for_site, -> (site) { where(:site == site).size }
+  scope :admins_count_for_site, -> (site) { where(site: site).size }
 
 end

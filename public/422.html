@@ -3,6 +3,7 @@
 <head>
   <title>The change you wanted was rejected (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"/>
   <style>
   .rails-default-error-page {
     background-color: #EFEFEF;
@@ -52,16 +53,21 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
   </style>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+    </script>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/422.html -->
   <div class="dialog">
     <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+      <h1>Acesso restrito.</h1>
+      <p>Você não tem permissão para acessar essa pagina.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p><button onclick="goBack()">Clique para voltar</button></p>
   </div>
 </body>
 </html>

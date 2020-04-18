@@ -10,10 +10,10 @@ class Backoffice::Config::TitleController < ApplicationController
     Site.all.each do |site|
 
       if (request.subdomain == site.url) && (site.id == current_user.site)
-        @titulos = Title.all.where(site_id: 1)
+        @titulos = Title.all.where(site_id: current_user.site)
         return
       else
-        @titulos = Title.all.where(site_id: 1)
+        @titulos = Title.all.where(site_id: current_user.site)
         return
       end
 
@@ -52,7 +52,7 @@ class Backoffice::Config::TitleController < ApplicationController
 
     def carregaDropdowns
       @sites = Site.all   
-      @profiles = Profile.profile(current_user)
+      @profiles = Profile.profile_views(current_user, current_user.site)
     end
 
     def set_title

@@ -62,7 +62,7 @@ class Backoffice::Product::ProductController < ApplicationController
  private
 
     def carregaDropdowns
-      @profiles = Profile.profile(current_user)
+      @profiles = Profile.profile_views(current_user, current_user.site)
       @categories = Category.all.where(site_id: current_user.site)   
       @labels = Label.all.where(site_id: current_user.site)
       @sites = Site.all   

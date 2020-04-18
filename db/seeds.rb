@@ -8,7 +8,7 @@
 
 puts "Cadastrando o Sites Padrão..."
 
-Site.create( name: "Site Padrão", description: "Site com layout padrão para lanchonete" )
+Site.create( name: "Site Padrão", description: "Site com layout padrão para lanchonete", url: "padrao" )
 
 puts "Site cadastrados com sucesso!"
 

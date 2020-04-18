@@ -18,20 +18,22 @@ class Backoffice::Config::UserController < ApplicationController
     if @admin.save
       insert_profiles(1, 1, 1, 1, @admin.id, @admin.site)
 
-        if(@admin.role == restricted_access)
-          redirect_to edit_backoffice_config_user_path(@admin), 
-          notice: "Novo Administrador #{@admin.name} cadastrado com sucesso, altere os módulos de acesso abaixo."
-        else
-          redirect_to backoffice_config_user_index_path, notice: "Novo Administrador #{@admin.name} salvo com sucesso"
-        end
+        #if(@admin.role == "restricted_access")
+          redirect_to edit_backoffice_config_user_path(@admin, anchor: "profile"), 
+          notice: "Novo Administrador #{@admin.name} cadastrado com sucesso, como o tipo de acesso é restrito, altere o perfil abaixo."
+        #else
+        #  redirect_to backoffice_config_user_index_path, notice: "Novo Administrador #{@admin.name} salvo com sucesso"
+        #end
     else
       render :new
     end
   end
 
   def edit
-      @profiles_admin_set = Profile.profile_user_id(@admin)
+    #if(@admin.role == "restricted_access")
+      @profiles_admin_set = Profile.profile(@admin, @admin.site)
       alter_profiles
+    #end
   end
 
   def update
@@ -69,7 +71,9 @@ class Backoffice::Config::UserController < ApplicationController
 
     def carregaDropdowns
       @sites = Site.all   
-      @profiles = Profile.profile_user_id(current_user)
+      unless(current_user.blank?)
+        @profiles = Profile.profile_views(current_user, current_user.site)
+      end
     end
 
     def set_admin
@@ -125,7 +129,7 @@ class Backoffice::Config::UserController < ApplicationController
           request.query_parameters["#{@profile.code}-3"] ? @profile.update(erase: 1) : @profile.update(erase: 0)
             
         end
-        redirect_to edit_backoffice_config_user_path(@admin), notice: "Perfil de acesso do usuário #{@admin.name} salvo com sucesso"
+        redirect_to edit_backoffice_config_user_path(@admin, anchor: "profile"), notice: "Perfil de acesso do usuário #{@admin.name} salvo com sucesso"
       end
     end
     

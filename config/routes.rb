@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   namespace :backoffice do
     get 'dashboard/index'
   end
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   
   
   root 'lanchonetedotrom/home#index'
