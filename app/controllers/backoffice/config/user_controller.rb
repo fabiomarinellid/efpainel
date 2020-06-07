@@ -94,7 +94,7 @@ class Backoffice::Config::UserController < ApplicationController
         params.require(:user).permit(:photoavatar, :name, :email, :role, :password, :password_confirmation, :site)
     end
  
-    #Inicio dos Profiles
+    #Inicio dos Profile
   
     def alter_profiles
 
