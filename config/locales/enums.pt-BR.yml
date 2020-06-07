@@ -2,8 +2,9 @@
   enums:
     user:
       role:
-        full_access: Acesso Completo
-        restricted_access: Acesso Restrito
+        developer: Desenvolvimento
+        owner: Proprietário
+        maintainer: Manutenção
     item:
       active:
         enable: Sim

@@ -1,10 +1,11 @@
 class Backoffice::Product::LabelController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_label, only: [:edit, :update, :destroy]  
   before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
-  before_action :authenticate_user!
+  
   def index
 
     Site.all.each do |site|

@@ -1,10 +1,11 @@
 class Backoffice::Config::TitleController < ApplicationController
+   before_action :authenticate_user!
    before_action :set_title, only: [:edit, :update]
    before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
    layout "backoffice"
 
-   before_action :authenticate_user!
+   
   def index
 
     Site.all.each do |site|

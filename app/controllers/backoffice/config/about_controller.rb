@@ -1,15 +1,16 @@
 class Backoffice::Config::AboutController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_about, only: [:edit, :update, :destroy]
   before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
-  before_action :authenticate_user!
+  
   def index
 
     Site.all.each do |site|
 
-      if (request.subdomain == site.url) && (site.id == current_user.site_id)
+      if (request.subdomain == site.url) && (site.id == current_user.site)
         @abouts =  About.all.where(site_id: current_user.site)
         return
       else

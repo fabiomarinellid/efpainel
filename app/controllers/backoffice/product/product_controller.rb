@@ -1,10 +1,11 @@
 class Backoffice::Product::ProductController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_produto, only: [:edit, :update, :destroy]
   before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
-  before_action :authenticate_user!
+  
   def index
 
     Site.all.each do |site|
@@ -73,6 +74,6 @@ class Backoffice::Product::ProductController < ApplicationController
     end
 
     def params_produto
-        params.require(:item).permit(:name, :description, :price,  :active, :bestseller, :category_id, :label_id, :site_id)
+        params.require(:item).permit(:name, :description, :price,  :active, :bestseller, :category_id, :label_id, :site_id, :photoitem)
     end
 end

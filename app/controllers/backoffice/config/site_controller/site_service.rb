@@ -7,11 +7,12 @@ class Backoffice::Config::SiteController::SiteService
         if @site.valid?
             @site.save!
             @admin = User.find(user_id)
-            @admin.update(site: @site.id) 
+            @admin.update(site: @site.id, role: 1) 
             insert_profiles(1, 1, 1, 1, user_id, @site.id, @site.url)
             insert_titles(@site.name, @site.id)
             insert_categories(@site.id)
             insert_labels(@site.id)
+            insert_abouts(@site.id)
         end
 
         @site
@@ -29,11 +30,11 @@ class Backoffice::Config::SiteController::SiteService
               { :code =>  1, :description =>  'Principal', :father =>  nil ,:route =>  nil ,:read =>  read ,:create =>  0 ,:edit =>  0 ,:erase =>  0 ,:active =>  1 ,:order =>  1 ,:icon =>  nil ,:user_id =>  user ,:site_id =>  site, :level =>  1, :controller_name =>  'main' },
               { :code =>  2, :description =>  'Dashboard', :father =>  1 ,:route =>  'backoffice_dashboard_index_path' ,:read =>  read ,:create =>  0 ,:edit =>  0 ,:erase =>  0 ,:active =>  1 ,:order =>  2 ,:icon =>  'fas fa-chart-line' ,:user_id =>  user ,:site_id =>  site, :level =>  2, :controller_name => 'dashboard'  },
               { :code =>  3, :description =>  'Sites', :father =>  1 ,:route =>  'backoffice_config_site_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  3 ,:icon =>  'icon-website' ,:user_id =>  user ,:site_id =>  site, :level =>  2, :controller_name => 'site'  },
-              { :code =>  4, :description =>  'Admins', :father =>  1 ,:route =>  'backoffice_config_user_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  4 ,:icon =>  'icon-user-1' ,:user_id =>  user ,:site_id =>  site, :level =>  2, :controller_name => 'user'  },
+              { :code =>  4, :description =>  'Admins', :father =>  1 ,:route =>  'backoffice_config_user_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  4 ,:icon =>  'fas fa-users' ,:user_id =>  user ,:site_id =>  site, :level =>  2, :controller_name => 'user'  },
               { :code =>  5, :description =>  'Cadastros', :father =>  nil ,:route =>  nil ,:read =>  read ,:create =>  0 ,:edit =>  0 ,:erase =>  0 ,:active =>  1 ,:order =>  5 ,:icon =>  nil ,:user_id =>  user ,:site_id =>  site, :level =>  1, :controller_name =>  'register'  },
               { :code =>  6, :description =>  'Info', :father =>  5 ,:route =>  nil ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  6 ,:icon =>  'fas fa-info' ,:user_id =>  user ,:site_id =>  site, :level =>  3, :controller_name =>  'info'  },
-              { :code =>  7, :description =>  'Titulos', :father =>  6 ,:route =>  'backoffice_config_title_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  7 ,:icon =>  'fas fa-heading' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'title'  },
-              { :code =>  8, :description =>  'Sobre', :father =>  6 ,:route =>  'backoffice_config_about_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  8 ,:icon =>  'fas fa-address-card' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'about'  },
+              { :code =>  7, :description =>  'Titulos', :father =>  6 ,:route =>  'backoffice_config_title_index_path' ,:read =>  read ,:create =>  0 ,:edit =>  edit ,:erase =>  0 ,:active =>  1 ,:order =>  7 ,:icon =>  'fas fa-heading' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'title'  },
+              { :code =>  8, :description =>  'Sobre', :father =>  6 ,:route =>  'backoffice_config_about_index_path' ,:read =>  read ,:create =>  0 ,:edit =>  edit ,:erase =>  0 ,:active =>  1 ,:order =>  8 ,:icon =>  'fas fa-address-card' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'about'  },
               { :code =>  9, :description =>  'Cardápio', :father =>  5 ,:route =>  nil ,:read =>  read ,:create =>  0 ,:edit =>  0 ,:erase =>  0 ,:active =>  1 ,:order =>  9 ,:icon =>  'fas fa-list' ,:user_id =>  user ,:site_id =>  site, :level =>  3, :controller_name =>  'menu'  },
               { :code =>  10, :description =>  'Categoria', :father =>  9 ,:route =>  'backoffice_product_category_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  10 ,:icon =>  'icon-list' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'category'  },
               { :code =>  11, :description =>  'Etiquetas', :father =>  9 ,:route =>  'backoffice_product_label_index_path' ,:read =>  read ,:create =>  create ,:edit =>  edit ,:erase =>  erase ,:active =>  1 ,:order =>  11 ,:icon =>  'fas fa-tags' ,:user_id =>  user ,:site_id =>  site, :level =>  4, :controller_name => 'label'  },
@@ -86,6 +87,16 @@ class Backoffice::Config::SiteController::SiteService
             { :name => '', :description => 'Não adicionar rótulos', :site_id => site },
             { :name => 'Novo', :description => 'Produtos novos', :site_id => site },
             { :name => 'Promoção', :description => 'Produtos em promoção', :site_id => site }
+          ]
+        )
+
+      end
+
+      def self.insert_abouts(site)
+
+        About.create(
+          [
+            { :description => 'Conte as pessoas sobre seu negócio', :site_id => site }
           ]
         )
 

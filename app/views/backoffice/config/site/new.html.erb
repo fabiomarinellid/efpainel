@@ -7,13 +7,13 @@
 
 <% if @site.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
-    <ul>
-        <% @site.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-    </ul>
+      <ul>
+          <% @site.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+      </ul>
 
     </div>
 <% end %>
@@ -32,12 +32,16 @@
           </div>
           <div class="form-group">
             <%= t.label "Subdominio", class: "form-control-label" %>
-            <%= t.text_field :url, class:"form-control" %>
-            <span>Ex: edu - Url: edu.lancho.net</span>
-        </div>
-	      <div class="form-group">       
-	        <%= t.submit "Salvar", class: "btn btn-primary" %>
-	      </div>
+            <div class="input-group">  
+              <%= t.text_field :url, class:"form-control" %>
+              <div class="input-group-append"><span class="input-group-text">.lancho.net</span></div>
+            </div>
+          <span>Ex: edu - Url: edu.lancho.net</span>
+          </div>
+
+          <div class="form-group">       
+            <%= t.submit "Salvar", class: "btn btn-primary" %>
+          </div>
 	    <% end %>
 	  </div>
 	</div>

@@ -1,10 +1,11 @@
 class Backoffice::Product::CategoryController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category, only: [:edit, :update, :destroy]  
   before_action :carregaDropdowns, only: [:index, :new , :create, :edit, :update]
 
   layout "backoffice"
 
-  before_action :authenticate_user!
+  
 
   def index
 

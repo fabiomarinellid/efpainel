@@ -5,17 +5,19 @@
   </div>
 </div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="block margin-bottom-sm">
-        <div class="input-group">
-          <input type="text" class="form-control">
-          <div class="input-group-append">
-            <button type="button" class="btn btn-primary">Pesquisar</button>
-          </div>
-        </div>
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="block margin-bottom-sm">
+            <form>
+               <div class="input-group">
+                  <%= text_field_tag(:q, params[:q], { class:"form-control", placeholder: "Pesquisar por nome ou email..." }) %>
+                  <div class="input-group-append">
+                     <%= button_tag(class:"btn btn-primary") do %><i class="fas fa-search"></i><% end %>
+                  </div>
+               </div>
+            </form>
+         </div>
       </div>
-     </div>
    </div>
 </div>
 <div class="container-fluid">
@@ -43,31 +45,45 @@
 	                  <td><%= admin.name %></td>
                     <td><%= admin.email %></td>
                     <td><%= admin.role_i18n %></td>
-	                  <td style="width: 130px; text-align: center;">
-                      <%= link_to edit_backoffice_config_user_path(admin), class: "btn btn-primary" do %>
-                          <i class="icon-new-file"></i>
-                      <% end %>
-                      <%= link_to backoffice_config_user_path(admin), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{admin.name}</b>?"} do %>
-                        <i class="icon-close"></i>
-                      <% end %>
+	                  <td class="text-center align-middle">
+                      <div style="padding:10px;">
+                        <% if(Profile.edit_permit(4, current_user.id, current_user.site) == 1) %>
+                          <%= link_to edit_backoffice_config_user_path(admin), class: "btn btn-primary" do %>
+                              <i class="icon-new-file"></i>
+                          <% end %>
+                        <% end %>
+                      </div>
+                      <div>
+                        <% if(Profile.erase_permit(4, current_user.id, current_user.site) == 1) %>
+                          <%= link_to backoffice_config_user_path(admin), :method => :delete, class: "btn btn-secondary", data: {confirm: "Confirma a exclusão do admin <b>#{admin.name}</b>?"} do %>
+                            <i class="icon-close"></i>
+                          <% end %>
+                        <% end %>
+                      </div>
                     </td>
 	                </tr>
                 <% end %>
               </tbody>
             </table>
           </div>
+          <%= paginate @admins %>
         </div>
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+<div class="container-fluid">
    <div class="row">
-    <div class="col-lg-12">
-      <div class="block margin-bottom-sm">
-       <%= link_to new_backoffice_config_user_path, class: "btn btn-primary" do %>
-          <i class="fa fa-plus"></i>
-       <% end %>
+      <div class="col-lg-12">
+         <div class="block margin-bottom-sm">
+            <% if(Profile.create_permit(4, current_user.id, current_user.site) == 1) %>
+                <%= link_to new_backoffice_config_user_path, class: "btn btn-primary" do %>
+                  <i class="fa fa-plus"></i>
+                <% end %>
+              <div style="float:right; margin-top:6px;"><%= @adminsCount %> Registro(s)</div>
+            <% else %>
+              <div style="text-align:right;"><%= @adminsCount %> Registro(s)</div>
+            <% end %>
+         </div>
       </div>
-     </div>
    </div>
- </div>  
+</div>

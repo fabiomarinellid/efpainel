@@ -8,7 +8,7 @@
 
 puts "Cadastrando o Sites Padrão..."
 
-Site.create( name: "Site Padrão", description: "Site com layout padrão para lanchonete", url: "padrao" )
+Site.create( name: "Default", description: "Site com layout padrão para lanchonete", url: "padrao" )
 
 puts "Site cadastrados com sucesso!"
 
@@ -18,8 +18,8 @@ User.create(
   email: "admin@admin.com",
   password: "123456",
   password_confirmation: "123456",
-  name: "Admin",
-  role: 0,
+  name: "Developer",
+  role: "developer",
   site: 1
 )
 
@@ -54,7 +54,7 @@ puts "Cadastrando o Perfil para os módulos do primeiro usuario..."
 Profile.create( code: 1, description: 'Principal', father: nil ,route: nil ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 1 ,icon: nil ,user_id: 1 ,site_id: 1, level: 1, controller_name: 'main' )
 Profile.create( code: 2, description: 'Dashboard', father: 1 ,route: 'backoffice_dashboard_index_path' ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 2 ,icon: 'fas fa-chart-line' ,user_id: 1 ,site_id: 1, level: 2, controller_name: 'dashboard'  )
 Profile.create( code: 3, description: 'Sites', father: 1 ,route: 'backoffice_config_site_index_path' ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 3 ,icon: 'icon-website' ,user_id: 1 ,site_id: 1, level: 2, controller_name: 'site'  )
-Profile.create( code: 4, description: 'Admins', father: 1 ,route: 'backoffice_config_user_index_path' ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 4 ,icon: 'icon-user-1' ,user_id: 1 ,site_id: 1, level: 2, controller_name: 'user'  )
+Profile.create( code: 4, description: 'Admins', father: 1 ,route: 'backoffice_config_user_index_path' ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 4 ,icon: 'fas fa-users' ,user_id: 1 ,site_id: 1, level: 2, controller_name: 'user'  )
 Profile.create( code: 5, description: 'Cadastros', father: nil ,route: nil ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 5 ,icon: nil ,user_id: 1 ,site_id: 1, level: 1, controller_name: 'register'  )
 Profile.create( code: 6, description: 'Info', father: 5 ,route: nil ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 6 ,icon: 'fas fa-info' ,user_id: 1 ,site_id: 1, level: 3, controller_name: 'info'  )
 Profile.create( code: 7, description: 'Titulos', father: 6 ,route: 'backoffice_config_title_index_path' ,read: 1 ,create: 1 ,edit: 1 ,erase: 1 ,active: 1 ,order: 7 ,icon: 'fas fa-heading' ,user_id: 1 ,site_id: 1, level: 4, controller_name: 'title'  )

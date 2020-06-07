@@ -37,6 +37,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'enum_help'
 gem 'money-rails'
 gem 'kaminari'
+gem 'pundit'
 
 source 'https://rails-assets.org' do
 # BootboxJS

@@ -1,7 +1,8 @@
 class Backoffice::DashboardController < ApplicationController
-  layout "backoffice"
+   layout "backoffice"
 
    before_action :authenticate_user!
+   protect_from_forgery with: :exception
   
   def index
 

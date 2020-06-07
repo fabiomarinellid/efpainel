@@ -48,9 +48,9 @@
                         <td><%= site.url %></td>
                         <td>
                            <% @names_users.each do |user| %>
-                           <% if user.id == site.id %>
-                           <%= user.name %>,
-                           <% end %>
+                              <% if user.id == site.id %>
+                                 <%= user.email %></br>
+                              <% end %>
                            <% end %>
                         </td>
                         <td class="text-center align-middle">

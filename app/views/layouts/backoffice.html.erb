@@ -15,13 +15,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <script>
-      function funcao1()
-      {
-      alert("<%= request.fullpath %>");
-      }
-    </script>
   </head>
 
   <body>
@@ -49,15 +42,16 @@
               </div>
             <!-- Languages dropdown    -->
             <div class="list-inline-item dropdown">
-                <a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
-                    <i class="icon-new-file"></i><span>Perfil</span>
-                </a>
+              <a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                  <i class="icon-new-file"></i><span>Perfil</span>
+              </a>
               <div aria-labelledby="languages" class="dropdown-menu">
                 <%= link_to edit_backoffice_config_user_path(current_user.id), class: "dropdown-item" do %>
                    <span>Meu perfil</span>
                 <% end %>
-                <a rel="nofollow" href="#" class="dropdown-item"><span>Informações do site</span>
-                  <input type="button" onclick="funcao1()" value="Exibir Alert" />
+                <a rel="nofollow" href="#" class="dropdown-item"><span>Configurações do site</span>
+                </a>
+                <a rel="nofollow" href="#" class="dropdown-item"><span>Ajuda</span>
                 </a>
               </div>
             </div>
