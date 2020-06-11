@@ -23,7 +23,7 @@ class Backoffice::Config::SiteController::SiteService
       def self.insert_profiles(read, create, edit, erase, user, site, url)
 
         #@subdominio = 'root_path'
-        @subdominio = "http://#{url}.lvh.me:3000"
+        @subdominio = "http://#{url}.lancho.net"
 
           Profile.create(
             [
