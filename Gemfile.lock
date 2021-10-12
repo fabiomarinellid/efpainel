@@ -9,7 +9,6 @@ GIT
       sass-rails
 
 GEM
-  remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     actioncable (5.2.3)
@@ -152,7 +151,6 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     public_suffix (4.0.1)
-    puma (3.12.1)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.7)
@@ -237,6 +235,12 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
 
+GEM
+  remote: https://rubygems.org/
+  specs:
+    puma (4.3.9)
+      nio4r (~> 2.0)
+
 PLATFORMS
   ruby
 
@@ -258,7 +262,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   money-rails
   mysql2 (>= 0.4.4, < 0.6.0)
-  puma (~> 3.11)
+  puma (~> 4.3)
   pundit
   rails (~> 5.2.3)
   rails-assets-bootbox!
